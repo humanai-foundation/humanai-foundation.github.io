@@ -1,10 +1,10 @@
 ---
-title:  Automating Text Recognition and Transliteration of Historical Documents
+title:  Your Proposal Title
 layout: gsoc_proposal
-project: DeepOCR
+project: YourProjectName
 year: 2024
 organization:
-  - Alabama
+  - YourInstitute
 
 ---
 
@@ -32,9 +32,9 @@ Python and some previous experience in Machine Learning.
 Please use [this link](https://docs.google.com/document/d/1lWTSASnVICm_4Zof7wr6_LkS24P_Z8TR1px_tctemQI/edit) to access the test for this project. -->
 
 ## Mentors
-  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Mentor Name](mailto:ml4-sci@cern.ch) (Institute)
+  * [Xabier Granja](mailto:ml4-sci@cern.ch) (University of Alabama)
+  * [Emanuele Usai](mailto:ml4-sci@cern.ch) (University of Alabama)
 
 
 
