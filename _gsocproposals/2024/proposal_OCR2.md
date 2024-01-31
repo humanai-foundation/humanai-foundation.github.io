@@ -1,5 +1,5 @@
 ---
-title:  Automating Text Recognition and Transliteration of Historical Documents with convolutional - recurrent architectures
+title:  Automating Text Recognition and Transliteration of Historical Documents with models based on transformers
 layout: gsoc_proposal
 project: DeepOCR
 year: 2024
@@ -10,24 +10,26 @@ organization:
 
 ## Description
 
-Transliteration of text from centuries old works represents a research area that is underserved by current tools such as Adobe Acrobat’s OCR functionality. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century.
+Transliteration of text from centuries old works represents a research area that is underserved by current tools such as Adobe Acrobat’s OCR functionality. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) to recognize text in Spanish printed sources from the seventeenth century.
 
 ## Duration
 
 Total project length: 175 hours
 
 ## Task ideas
- * Creation of an hybrid end-to-end model based on convolutional - recurrent architectures (CNN-RNN) capable of performing text recognition
+ * Creation of an hybrid end-to-end model based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) capable of performing text recognition
 
 ## Expected results
  * AI will be trained to perform text recognition of non-standard printed text
  * AI should be able to extract text with at least 80% accuracy
 
+
+
 ## Requirements
 Python and some previous experience in Machine Learning.
 
 ## Difficulty level
-Medium
+Advanced
 
 <!-- ## Test
 Please use [this link](https://docs.google.com/document/d/1lWTSASnVICm_4Zof7wr6_LkS24P_Z8TR1px_tctemQI/edit) to access the test for this project. -->
