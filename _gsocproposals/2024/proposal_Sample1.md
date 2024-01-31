@@ -16,6 +16,7 @@ Add 2-3 sentences describing the proposal
 
 Total project length: 175 hours
 
+
 ## Task ideas
  * Add task idea
 
