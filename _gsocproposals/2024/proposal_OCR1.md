@@ -5,12 +5,13 @@ project: DeepOCR
 year: 2024
 organization:
   - Alabama
+  - Delhi
 
 ---
 
 ## Description
 
-Transliteration of text from centuries old works represents a research area that is underserved by current tools such as Adobe Acrobat’s OCR functionality. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century.
+Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century.
 
 ## Duration
 

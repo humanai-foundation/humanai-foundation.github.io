@@ -1,16 +1,17 @@
 ---
-title:  Automating Text Recognition and Transliteration of Historical Documents with models based on transformers
+title:  Text Recognition with Transformer Models
 layout: gsoc_proposal
 project: DeepOCR
 year: 2024
 organization:
   - Alabama
+  - Delhi
 
 ---
 
 ## Description
 
-Transliteration of text from centuries old works represents a research area that is underserved by current tools such as Adobe Acrobat’s OCR functionality. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) to recognize text in Spanish printed sources from the seventeenth century.
+Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) to recognize text in Spanish printed sources from the seventeenth century.
 
 ## Duration
 
