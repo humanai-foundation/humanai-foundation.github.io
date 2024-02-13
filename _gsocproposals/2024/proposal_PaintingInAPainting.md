@@ -36,8 +36,8 @@ Total project length: 175 hours
 Medium
 
 ## Mentors
-  * [Emanuele Usai](mailto:human-ai@cern.ch) (Alabama)
-  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (Alabama)
+  * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
   * [TBC](mailto:human-ai@cern.ch) (TBC)
 
 
