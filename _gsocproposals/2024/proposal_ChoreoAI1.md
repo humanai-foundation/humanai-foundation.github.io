@@ -1,5 +1,5 @@
 ---
-title: AI-Generated Choreography: from Solos to Duets
+title: AI-Generated Choreography:: from Solos to Duets
 layout: gsoc_proposal
 project: Choreo-AI
 year: 2024

@@ -1,7 +1,7 @@
 ---
-title:  ArtExtract
+title: Painting in a Painting:: explore hiddeng images beneath paintings with artificial intelligence
 layout: gsoc_proposal
-project: Painting in a Painting
+project: ArtExtract
 year: 2024
 organization:
   - Alabama
