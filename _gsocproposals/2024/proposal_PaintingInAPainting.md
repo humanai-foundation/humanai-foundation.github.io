@@ -1,5 +1,5 @@
 ---
-title: Painting in a Painting:: explore hiddeng images beneath paintings with artificial intelligence
+title: Painting in a Painting\: explore hidden images beneath paintings with artificial intelligence
 layout: gsoc_proposal
 project: ArtExtract
 year: 2024
