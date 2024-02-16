@@ -1,5 +1,5 @@
 ---
-title:  AI-Driven Roads: Revolutionizing Driving Simulation with Intelligent Scenario Generation
+title:  AI-Driven Roads - Revolutionizing Driving Simulation with Intelligent Scenario Generation
 layout: gsoc_proposal
 project: ISSR
 year: 2024

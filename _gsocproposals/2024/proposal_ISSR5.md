@@ -1,5 +1,5 @@
 ---
-title:  DriveSmart: AI-Powered Training for Safer Roads
+title:  DriveSmart - AI-Powered Training for Safer Roads
 layout: gsoc_proposal
 project: ISSR
 year: 2024

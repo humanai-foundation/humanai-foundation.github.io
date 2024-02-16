@@ -38,7 +38,6 @@ Medium
 ## Mentors
   * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
-  * [TBC](mailto:human-ai@cern.ch) (TBC)
 
 
 
