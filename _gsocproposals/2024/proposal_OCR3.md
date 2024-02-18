@@ -1,7 +1,7 @@
 ---
 title:  Self-supervised models for automatic OCR
 layout: gsoc_proposal
-project: DeepOCR
+project: RenAIssance
 year: 2024
 organization:
   - Alabama
