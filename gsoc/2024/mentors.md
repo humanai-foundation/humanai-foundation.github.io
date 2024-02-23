@@ -16,7 +16,7 @@ layout: plain
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama), Physical Sciences, AI
   * [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama), Social Sciences
   * [Yurii Halychanskiy](mailto:human-ai@cern.ch) (Illinois Urbana Champaign), Music, AI
-  * [Nichola Jones](mailto:human-ai@cern.ch) (Yale), Modern Languages
+  * [Nicholas Jones](mailto:human-ai@cern.ch) (Yale), Modern Languages
   * [Tanvi Kumar](mailto:human-ai@cern.ch) (Microsoft), Art, AI
   * [Harrison Meadows](mailto:human-ai@cern.ch) (UTK), Modern Languages and Literature
   * [Ben McManus](mailto:human-ai@cern.ch) (Alabama), Developmental Psychology

@@ -1,9 +1,9 @@
 ---
-project: TBC
+project: Template to add a Project
 layout: default
 logo: placeholder.jpg
 description: |
-   Project TBC
+   Template to add a Project
 
 ---
 
