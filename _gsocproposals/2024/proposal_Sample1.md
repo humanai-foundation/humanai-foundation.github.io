@@ -16,6 +16,7 @@ Proposal TBC
 
 Total project length: 175 hours
 
+
 ## Task ideas
  * Add task idea
 
