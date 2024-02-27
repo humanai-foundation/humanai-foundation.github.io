@@ -28,6 +28,11 @@ Ability to code in R or Python; understanding of machine learning and/or natural
 ## Project difficulty level
 Intermediate
 
+
+## Test
+Please use [this link](https://docs.google.com/document/d/1N_a6GLyPhM0VoShLDIwRaN8W6EXlE_PpHHstIKgcmjw/edit) to access the test for this project.
+
+
 ## Mentors
   * [Jane Daquin](mailto:human-ai@cern.ch) (University of Alabama)
 
