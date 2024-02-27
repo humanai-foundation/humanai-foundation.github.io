@@ -6,6 +6,7 @@ layout: plain
 ## Full Mentor List (Name, Email, Org, Area of expertise)
   * [Stephon Alexander](mailto:human-ai@cern.ch) (Brown), Music, AI
   * [Joan Barth](mailto:human-ai@cern.ch) (Alabama), Social Psychology
+  * [Jean Christopher Boucher](mailto:human-ai@cern.ch) (Calgary), Social Sciences
   * [Ruchi Chudasama](mailto:human-ai@cern.ch) (University of Alabama/Fermilab), AI
   * [Colin Crovella](mailto:human-ai@cern.ch) (University of Alabama), AI
   * [Jane Daquin](mailto:human-ai@cern.ch) (Alabama), Criminology 
@@ -37,6 +38,7 @@ layout: plain
   * [Mauro Verzetti](mailto:human-ai@cern.ch) (Google), Music, AI
   * [Ilya Vidrin](mailto:human-ai@cern.ch) (Northeastern), Dance, AI 
   * [Omar Zapata Mesa](mailto:human-ai@cern.ch) (Antioquia), Social Sciences, AI
+
 
 
   
