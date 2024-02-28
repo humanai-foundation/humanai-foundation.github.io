@@ -40,6 +40,11 @@ Proficiency in programming languages such as Python, Java, or C++, knowledge of 
 ## Project difficulty level
 Intermediate
 
+
+## Test
+Please use [this link](https://docs.google.com/document/d/10jBBJjum9q6mCwDpeRmvHUrU8MchXdU2TfzPubakqwE/edit) to access the test for this project.
+
+
 ## Mentors
   * [Dr. Despina Stavrinos](mailto:human-ai@cern.ch) (University of Alabama)
   * [Dr. Benjamin McManus](mailto:human-ai@cern.ch) (University of Alabama)

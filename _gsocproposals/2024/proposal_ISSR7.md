@@ -31,6 +31,9 @@ Proficiency in programming languages such as Python, Java, or C++, knowledge of 
 ## Project difficulty level
 Medium
 
+## Test
+Please use [this link](https://docs.google.com/document/d/10jBBJjum9q6mCwDpeRmvHUrU8MchXdU2TfzPubakqwE/edit) to access the test for this project.
+
 ## Mentors
   * [Dr. Benjamin McManus](mailto:human-ai@cern.ch) (University of Alabama)
   * [Mr. Piyush Pawar](mailto:human-ai@cern.ch) (University of Alabama)
