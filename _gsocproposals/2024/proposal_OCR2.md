@@ -21,7 +21,7 @@ Total project length: 175 hours
  * Creation of an hybrid end-to-end model based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) capable of performing text recognition
 
 ## Expected results
- * AI will be trained to perform text recognition of non-standard printed text
+ * Machine learning models will be trained to perform text recognition of non-standard printed text
  * AI should be able to extract text with at least 80% accuracy
 
 

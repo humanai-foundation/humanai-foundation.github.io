@@ -31,7 +31,7 @@ Medium
 
 ## Mentors
   * [Dr. Despina Stavrinos](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Dr.Douglas M. Gibler](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Dr. Douglas M. Gibler](mailto:human-ai@cern.ch) (University of Alabama)
 
 
 
