@@ -17,10 +17,14 @@ This project uses Dark Web discussion board data to examine changes in language 
 Total project length: 175 hours
 
 ## Task ideas
- * TBC
+ * Extract and preprocess textual data from online forum posts for NLP analysis.
+ * Develop and train NLP models, such as LSTM or BERT, to understand the context, sentiment, and thematic elements of forum discussions.
+
 
 ## Expected results
- * TBC
+ * Create a processed dataset of textual content from online forum posts, ready for NLP tasks.
+ * Train an NLP model capable of identifying key themes, sentiments, or user engagement patterns within forum discussions, based on the linguistic features of the posts.
+ * If time allows: Analyze the linguistic relationships and communication patterns between forum participants to uncover insights into community dynamics and discourse trends.
 
 ## Requirements
 Ability to code in R or Python; understanding of machine learning and/or natural language processing.
