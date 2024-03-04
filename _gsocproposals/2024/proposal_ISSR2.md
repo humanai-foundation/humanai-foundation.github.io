@@ -17,16 +17,22 @@ The National Center for Educational Statistics includes a nationally representat
 Total project length: 175 hours
 
 ## Task ideas
- * TBC
-
+  * Identify which data time points in each cohort that might align with transition points in the emerging adulthood period
+  * Identify longitudinal variables that would reflect role transitions
+  * Develop a set of metrics based in US labor statistics that can be used to determine masculine and feminine occupations
+  * Review data analytic approaches to represent transitions.
+    
 ## Expected results
- * Data will be used to generate papers and presentations that contribute to the explanation of gender differences in occupations choices.
+ * A working model that predicts factors affecting workforce shortages in gender segregated, high demand fields of study (e.g., computing, engineering, nursing, education).
 
 ## Requirements
 Data reduction and data analytics (multilevel, longitudinal, multivariate modeling)
 
 ## Project difficulty level
 Intermediate to Easy
+
+## Test
+Please use this [link](https://docs.google.com/document/d/17AETsJPb5nHzsnnjTbZMvu_YbgIUwG5dxQ38ILiuEa4/edit?usp=sharing) to access the test for this project.
 
 ## Mentors
   * [Joan Barth](mailto:human-ai@cern.ch) (University of Alabama)
