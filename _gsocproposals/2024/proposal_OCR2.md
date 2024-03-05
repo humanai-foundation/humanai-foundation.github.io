@@ -1,7 +1,7 @@
 ---
 title:  Text Recognition with Transformer Models
 layout: gsoc_proposal
-project: RenAIssance
+project: DeepOCR
 year: 2024
 organization:
   - Alabama

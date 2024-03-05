@@ -1,7 +1,7 @@
 ---
 title:  Automating Text Recognition and Transliteration of Historical Documents with convolutional - recurrent architectures
 layout: gsoc_proposal
-project: RenAIssance
+project: DeepOCR
 year: 2024
 organization:
   - Alabama
