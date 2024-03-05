@@ -1,5 +1,5 @@
 ---
-project: AI-Enabled Choreography
+project: ChoreoAI
 layout: default
 logo: mirror_exercise.jpg
 description: |
