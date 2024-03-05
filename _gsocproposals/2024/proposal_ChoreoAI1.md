@@ -1,7 +1,7 @@
 ---
 title: AI-Generated Choreography - from Solos to Duets
 layout: gsoc_proposal
-project: AI-Enabled Choreography
+project: ChoreoAI
 year: 2024
 organization:
   - LBNL
