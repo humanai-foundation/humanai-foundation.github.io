@@ -1,5 +1,5 @@
 ---
-project: DeepOCR
+project: RenAIssance
 layout: default
 logo: DeepOCR.jpeg
 description: |
