@@ -35,8 +35,8 @@ Medium
 Solve the evaluation task(s) for any of the other projects in the HumanAI umbrella organization.  Please send us your CV and a link to all your completed work (github repo, Jupyter notebook + pdf of Jupyter notebook with output) to [human-ai@cern.ch](mailto:human-ai@cern.ch) with Evaluation Test: SIRA in the title. In the email specify which evaluation test(s) you solved. 
 
 ## Mentors
-  * [Harrison Prosper](human-ai@cern.ch) (Florida State University)
-  * [Olivia Prosper](human-ai@cern.ch) (University of Tennessee)
-  * [Sergei Gleyzer](human-ai@cern.ch) (University of Alabama)
+  * [Harrison Prosper](mailto:human-ai@cern.ch) (Florida State University)
+  * [Olivia Prosper](mailto:human-ai@cern.ch) (University of Tennessee)
+  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
