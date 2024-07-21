@@ -1,0 +1,1 @@
+id,site_id,board_id,type,maker,maker_id,accepter,accepter_id,started_date,completed_date,expire_date,status,visibility,maker_obligation,accepter_obligation,maker_payment_info,accepter_payment_info,term,is_maker_complete,is_accepter_complele,maker_rating,accepter_rating,db_created_on,db_updated_on

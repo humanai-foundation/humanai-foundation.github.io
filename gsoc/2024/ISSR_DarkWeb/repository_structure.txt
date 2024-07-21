@@ -1,0 +1,50 @@
+├───Analyze_files
+│   ├───CombiningAnalysisCompleteDataset
+│   │   ├───ContentAnalysis
+│   │   │   ├───DatasetsContentBERTopic
+│   │   │   ├───LLAMA
+│   │   │   ├───ModelsContent
+│   │   │   │   └───topic_model_all-MiniLM-L6-v2_190_20n_8dim_safetensors
+│   │   │   ├───PreProcessFiles
+│   │   │   └───ZeroShotClassificationResultsContent
+│   │   │       └───all-MiniLM-L6-v2_190_20n_8dim
+│   │   └───ThreadAnalysis
+│   │       ├───DatasetsThreadBERTopic
+│   │       ├───LLAMA
+│   │       ├───Models
+│   │       │   ├───topic_model_0.50Sil300_safetensors
+│   │       │   ├───topic_model_0.64SilNew_safetensors
+│   │       │   ├───topic_model_all-MiniLM-L6-v2_150_20n_safetensors
+│   │       │   ├───topic_model_all-MiniLM-L6-v2_200_safetensors
+│   │       │   └───topic_model_all-MiniLM-L6-v2_400_safetensors
+│   │       ├───OtherFilesPreviousApproach
+│   │       ├───ResultsCluster
+│   │       ├───ResultsGridSearchBERTopic
+│   │       └───ZeroShotClassificationResults
+│   │           ├───all-MiniLM-L6-v2_150_20n
+│   │           ├───all-MiniLM-L6-v2_200
+│   │           ├───all-MiniLM-L6-v2_400
+│   │           └───distiluse_7cluster
+│   └───SingleDatasetsAnalysis
+├───Datasets
+│   ├───CleanedData
+│   ├───FeatureEngineeringData
+│   │   ├───Boards
+│   │   ├───Members
+│   │   └───Threads
+│   ├───IntentCrime
+│   └───RawData
+├───Img
+│   ├───Content
+│   └───Thread
+├───MergedModelBERT
+├───MLModelsBERT
+│   ├───Content
+│   │   └───SavedModels
+│   └───Thread
+│       └───SavedModels
+├───ShowModelsBaselineBERT
+│   ├───Content
+│   └───Thread
+├───ShowResultsHTML
+└───Util

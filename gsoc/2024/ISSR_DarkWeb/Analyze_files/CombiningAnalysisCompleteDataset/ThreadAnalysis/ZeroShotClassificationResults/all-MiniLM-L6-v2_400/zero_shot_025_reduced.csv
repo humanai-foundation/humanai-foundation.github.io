@@ -1,0 +1,23 @@
+Topic,Labels
+-1_anyone_order_get,outliers
+0_weed_xanax_lsd,xanax - lsd - weed - cocaine
+1_counterfeit_id_fake,counterfeit money - fake ID
+2_vendor_vendor vendor_inquiry,inquiry - vendor vendor - vendor
+3_order_shipping_package,order
+4_scam_scammer_exit,fraud - scammer
+5_darknet_dark_tor,darknet
+6_empire_empire market_market,empire market
+7_mdma_pill_mda,pills - mdma
+8_card_carding_cc,credit card
+9_dream_dream market_nightmare,dream market - dream - nightmare
+10_market_market market_new market,new market
+11_review_vendor review_vendor,reviews vendor
+12_crosspost_review crosspost_crosspost vendor,crosspost review
+13_deposit_deposited_ticket,ticket - deposit - deposited
+14_anyone_heard_anyone heard,ask help
+15_pgp_key_pgp key,pgp key
+16_dispute_dispute dispute_mod,ask help - moderator support
+17_cryptonia_samsara_samsara market,samsara market
+18_wsm_wsm wsm_wsm vendor,wsm vendor
+19_ketamine_ketamine vendor_mdma ketamine,ketamine - mdma ketamine - ketamine vendor
+20_ticket_support ticket_support,ticket support - ask help

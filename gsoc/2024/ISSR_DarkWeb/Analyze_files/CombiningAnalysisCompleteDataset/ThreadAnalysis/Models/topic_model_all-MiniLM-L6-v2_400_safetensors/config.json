@@ -1,0 +1,16 @@
+{
+  "calculate_probabilities": false,
+  "language": null,
+  "low_memory": false,
+  "min_topic_size": 10,
+  "n_gram_range": [
+    1,
+    2
+  ],
+  "nr_topics": null,
+  "seed_topic_list": null,
+  "top_n_words": 10,
+  "verbose": true,
+  "zeroshot_min_similarity": 0.7,
+  "zeroshot_topic_list": null
+}

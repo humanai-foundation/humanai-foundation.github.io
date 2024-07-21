@@ -1,0 +1,15 @@
+
+__pycache__/PreProcessingUtils.cpython-312.pyc
+Analyze_files/Completed/__pycache__/PreProcessingText.cpython-312.pyc
+*.pyc
+/Analyze_files/CombiningAnalysisCompleteDataset/ThreadAnalysis/ResultsCluster
+Datasets/RawData/posts.csv
+Datasets/CleanedData/posts_cleaned.csv
+Analyze_files/CombiningAnalysisCompleteDataset/merged_data.csv
+Analyze_files/CombiningAnalysisCompleteDataset/ThreadAnalysis/cleaned_data_name_thread.csv
+Analyze_files/CombiningAnalysisCompleteDataset/ContentAnalysis/PreProcessFiles/content_clean_sentences.csv
+Analyze_files/CombiningAnalysisCompleteDataset/ThreadAnalysis/OtherFilesPreviousApproach/cleaned_data_name_thread_TF-IDF_top_keywords.csv
+extract_requirements.py
+MergedModelBERT/openhermes-2.5-mistral-7b.Q4_K_M.gguf
+llama_download.py
+openhermes-2.5-mistral-7b.Q4_K_M.gguf
