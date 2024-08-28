@@ -1,49 +1,55 @@
----
-title:  Automating Text Recognition and Transliteration of Historical Documents with convolutional - recurrent architectures
-layout: gsoc_proposal
-project: RenAIssance
-year: 2024
-organization:
-  - Alabama
-  - Delhi
+# **Automating Text Recognition and Transliteration of Historical Documents with Convolutional-Recurrent Architectures**
 
----
+## **Project Overview**
 
-## Description
+**Project Title:** Automating Text Recognition and Transliteration of Historical Documents  
+**Year:** 2024  
+**Organization:** University of Alabama, University of Delhi  
+**Project:** RenAIssance
 
-Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century.
+## **Project Description**
 
-## Duration
+Transliteration of text from centuries-old works represents a research area that is underserved by current tools like Adobe Acrobat’s OCR. While these tools can effectively recognize text from modern sources, they struggle with early forms of print, especially manuscripts. This project focuses on the application of hybrid end-to-end models based on Convolutional-Recurrent Architectures (CNN-RNN) to recognize and transliterate text from 17th-century Spanish printed sources.
 
-Total project length: 175 hours
+## **Project Duration**
 
-## Task ideas
- * Creation of an hybrid end-to-end model based on convolutional - recurrent architectures (CNN-RNN) capable of performing text recognition
+**Total Length:** 175 hours
 
-## Expected results
- * Machine learning models will be trained to perform text recognition of non-standard printed text
- * AI should be able to extract text with at least 80% accuracy
+## **Key Tasks**
 
-## Requirements
-Python and some previous experience in Machine Learning.
+- **Developing a Hybrid End-to-End Model:**  
+  Creation of a model based on CNN-RNN architectures capable of performing text recognition from historical documents.
+  
+- **Training the Model:**  
+  Training machine learning models to recognize and extract text from non-standard printed sources.
 
-## Difficulty level
-Medium
+## **Expected Results**
 
-## Test
-Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/Ee6S21QpgmxFj4szyRXqMAsBnMIs1TqsiPC4vP6-kRxrRw?e=zkxpoU) to access the test for this project.
+- **Text Recognition Accuracy:**  
+  Achieve at least 80% accuracy in text extraction from 17th-century Spanish printed sources.
 
-## Mentors
-  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
+## **Requirements**
 
+- **Core Competencies:**  
+  - Strong programming skills in Python
+  - Familiarity with machine learning frameworks (e.g., TensorFlow, PyTorch)
+  - Experience with computer vision or natural language processing
 
+## **Difficulty Level**
+
+**Medium**
+
+## **How to Apply**
+
+Please complete the [test](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/Ee6S21QpgmxFj4szyRXqMAsBnMIs1TqsiPC4vP6-kRxrRw?e=zkxpoU) for this project.
+
+**Important:**  
+Do not contact mentors directly by email. Instead, email your **CV** and **test results** to [human-ai@cern.ch](mailto:human-ai@cern.ch) with the Project Title. The mentors will then get in touch with you.
+
+## **Mentors**
+
+- **Sergei Gleyzer** (University of Alabama)  
+- **Xabier Granja** (University of Alabama)  
+- **Emanuele Usai** (University of Alabama)
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
-
-
-
-<!-- ## Links
-  * [Paper 1](https://arxiv.org/abs/1807.11916)
-  * [Paper 2](https://arxiv.org/abs/1902.08276) -->
