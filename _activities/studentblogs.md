@@ -5,7 +5,7 @@ layout: default
 ---
 
 
-# ![ML4SCI](/images/humanai.jpg)
+<img src="/images/humanai.jpg" alt="HumanAI" width="200"/>
 
 # Google Summer of Code blog posts
 
