@@ -41,8 +41,8 @@ Proficiency in programming languages such as Python, Java, or C++, knowledge of 
 ## Project difficulty level
 Easy to Intermediate 
 
-## Test
-Please use [this link](https://docs.google.com/document/d/1VSIC45m66V7J2HXhTBSHL33rMat7gsDIFq-fOrZ3U0E/edit?usp=sharing) to access the test for this project.
+<!-- ## Test
+Please use [this link](https://docs.google.com/document/d/1VSIC45m66V7J2HXhTBSHL33rMat7gsDIFq-fOrZ3U0E/edit?usp=sharing) to access the test for this project. -->
 
 
 ## Mentors

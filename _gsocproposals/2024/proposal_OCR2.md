@@ -32,8 +32,8 @@ Python and some previous experience in Machine Learning.
 ## Difficulty level
 Advanced
 
-## Test
-Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/Ee6S21QpgmxFj4szyRXqMAsBnMIs1TqsiPC4vP6-kRxrRw?e=zkxpoU) to access the test for this project.
+<!-- ## Test
+Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/Ee6S21QpgmxFj4szyRXqMAsBnMIs1TqsiPC4vP6-kRxrRw?e=zkxpoU) to access the test for this project. -->
 
 ## Mentors
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)

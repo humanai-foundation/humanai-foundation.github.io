@@ -31,8 +31,8 @@ Data reduction and data analytics (multilevel, longitudinal, multivariate modeli
 ## Project difficulty level
 Intermediate to Easy
 
-## Test
-Please use this [link](https://docs.google.com/document/d/17AETsJPb5nHzsnnjTbZMvu_YbgIUwG5dxQ38ILiuEa4/edit?usp=sharing) to access the test for this project.
+<!-- ## Test
+Please use this [link](https://docs.google.com/document/d/17AETsJPb5nHzsnnjTbZMvu_YbgIUwG5dxQ38ILiuEa4/edit?usp=sharing) to access the test for this project. -->
 
 ## Mentors
   * [Joan Barth](mailto:human-ai@cern.ch) (University of Alabama)

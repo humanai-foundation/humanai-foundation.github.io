@@ -32,8 +32,8 @@ Participants should be comfortable with standard data science software including
 ## Project difficulty level
 Hard
 
-## Test
-Please use this [link](https://docs.google.com/document/d/18yE220TOWpXUddu8lRX2KDuuJUgDyL9PItDjxOjJkCI/edit?usp=sharing) to access the test for this project.
+<!-- ## Test
+Please use this [link](https://docs.google.com/document/d/18yE220TOWpXUddu8lRX2KDuuJUgDyL9PItDjxOjJkCI/edit?usp=sharing) to access the test for this project. -->
 
 ## Mentors
   * [Mariel Pettee](mailto:human-ai@cern.ch) (Lawrence Berkeley National Laboratory)
