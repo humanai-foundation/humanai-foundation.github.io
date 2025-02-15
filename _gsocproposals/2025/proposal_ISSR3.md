@@ -1,5 +1,5 @@
 ---
-title: Advancing Transportation Safety and Behavior Research through AI
+title: AAI-Powered Behavioral Analysis for Suicide Prevention, Substance Use, and Mental Health Crisis Detection with Longitudinal Geospatial Crisis Trend Analysis
 layout: gsoc_proposal
 project: ISSR
 year: 2025
@@ -10,7 +10,13 @@ organization:
 
 ## Description
 
-The primary objective of this project is to explore how machine learning and AI can enhance the analysis of data collected by a high-fidelity driving simulator and integrated eye tracking. By utilizing these advanced technologies, we gain deeper insights into driver behavior, identify potential risk factors, and develop effective interventions to improve transportation safety.
+Public health agencies and crisis service providers face challenges in detecting and addressing emerging suicide, substance use, and mental health crises in real time. Traditional public health data sources—such as hospital admissions, overdose reports, and crisis hotline statistics—are valuable but lag behind the actual emergence of crises within communities.
+This project proposes an AI-driven public health monitoring system that integrates:
+ * Behavioral tracking – Analyzing how individuals engage with crisis-related content to identify patterns of distress escalation.
+ * Crisis-related language analysis – Detecting keywords, slang, and coded language used to discuss mental health struggles, suicidality, and substance use.
+ * Geospatial crisis mapping with longitudinal trend analysis – Identifying where distress-related discussions are concentrated and tracking changes over time to detect increasing crisis trends within specific geographic regions.
+By collecting and analyzing this data over time, this system will provide early-warning indicators of worsening mental health conditions and emerging substance use risks in communities. These insights can help service providers predict areas of growing crisis and proactively allocate resources to where they are needed most.
+
 
 ## Duration
 
@@ -18,27 +24,40 @@ Total project length: 175 hours
 
 ## Task ideas
 
- * Driver Distraction Detection: Students can develop machine learning models that analyze eye tracking data to detect signs of driver distraction, such as prolonged gaze away from the road. This project would involve training models on the collected data and developing a real-time system for distraction detection.
+ * Monitor crisis-related discussions & communication patterns:
+    * Develop a crisis lexicon for tracking explicit and coded language related to mental health and substance use.
+    * Use AI-driven sentiment analysis and topic modeling to track changes over time.
+ * Track engagement behaviors with crisis content:
+    * Analyze how users interact with crisis-related posts to identify distress escalation trends.
+    * Evaluate whether mental health outreach is effectively reaching communities in need.
+ * Develop location-based crisis mapping & longitudinal analysis:
+    * Use NLP and metadata extraction to geotag crisis-related discussions.
+    * Generate real-time and historical heatmaps of crisis trends.
+ * Implement a public health dashboard for crisis monitoring:
+    * Build an interactive visualization tool to display trends and insights.
+    * Provide analytics for public health agencies and service providers to refine outreach efforts.
 
- * Object Detection and Tracking: Machine learning models can be trained to detect and track various objects in video streams, such as vehicles, pedestrians, traffic signs, or road markings. This enables automated analysis of the interactions between the driver and the surrounding environment, providing insights into driving behavior and potential safety hazards.
-
- * Driving Style Classification: Students can develop machine learning models to classify different driving styles based on the data collected from the driving simulator. This project would involve training models to recognize patterns in driving behavior and categorize drivers into different styles, such as aggressive, cautious, or distracted.
-
- * Predictive Modeling for Crash Risk: Students can build machine learning models that integrate data from the driving simulator, eye tracking, and real-world crash reports to predict crash risk. This project would involve training models to identify factors that contribute to crashes and develop a predictive model to estimate the likelihood of crashes in different scenarios.
-
- * Gaze Analysis: With eye tracking data integrated into the driving simulator studies, machine learning techniques can be employed to analyze gaze patterns. AI models can identify regions of interest, determine the duration of fixations, and understand the driver's visual attention during different driving scenarios. This analysis can reveal insights into driver distraction, hazard perception, and cognitive workload.
 
 
 ## Expected results
- * Prediction of driver behavior and risk assessment based on data analysis
- * Evaluation of driver performance and design of interventions for improved driving skills and safety
+ * An AI-driven crisis detection system that identifies suicide, substance use, and mental health risks by analyzing social media discussions and engagement behaviors over time.
+ * An interactive dashboard with real-time and longitudinal crisis heatmaps to help mental health service providers identify trends and direct outreach efforts effectively.
+ * Predictive indicators for crisis escalation that enable public health agencies to preemptively deploy crisis intervention resources.
+ * A framework for evaluating the long-term effectiveness of crisis outreach campaigns and adjusting intervention strategies accordingly.
+
 
 
 ## Requirements
-Proficiency in programming languages such as Python, Java, or C++, knowledge of machine learning frameworks, solid understanding of statistical analysis, data visualization, and data preprocessing
+ * Strong Python programming skills.
+ * Experience with Natural Language Processing (NLP) frameworks (spaCy, NLTK, or Hugging Face Transformers).
+ * Familiarity with machine learning models for text analysis (e.g., BERT, LDA topic modeling, VADER for sentiment analysis).
+ * Data visualization experience with Plotly, D3.js, or Matplotlib.
+ * Experience with geospatial data analysis and GIS mapping tools (e.g., GeoPandas, Folium, Leaflet.js).
+ * Understanding of public health or behavioral crisis indicators is a plus.
+
 
 ## Project difficulty level
-Intermediate
+Intermediate to Advanced – Suitable for students with prior experience in NLP, social media analysis, and geospatial data visualization.
 
 
 <!-- ## Test
@@ -46,11 +65,7 @@ Please use [this link](https://docs.google.com/document/d/10jBBJjum9q6mCwDpeRmvH
 
 
 ## Mentors
-  * [Dr. Despina Stavrinos](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Dr. Benjamin McManus](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Mr. Piyush Pawar](mailto:human-ai@cern.ch) (University of Alabama)
-
-
+  * [David M. White](mailto:human-ai@cern.ch) (University of Alabama)
 
 
 

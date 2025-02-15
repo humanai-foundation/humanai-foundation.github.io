@@ -11,7 +11,10 @@ organization:
 
 ## Description
 
-Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century.
+Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on convolutional - recurrent architectures (CNN-RNN) to recognize text in Spanish printed sources from the seventeenth century. Specifically, the project aims to:
+ * Use generative models (GANs or diffusion models) to generate synthetic renaissance text with variations in printing defects, ink bleed, and paper degradation.
+ * Implement weighted learning techniques to improve the model’s ability to recognize rare letterforms, diacritics, or symbols specific to renaissance printed Spanish sources.
+ * Introduce constrained beam search decoding with a renaissance Spanish lexicon to reduce hallucinated outputs and enhance word level accuracy.
 
 ## Duration
 

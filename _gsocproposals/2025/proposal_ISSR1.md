@@ -1,5 +1,5 @@
 ---
-title:  Examination of the evolution of language among Dark Web users
+title:  Coding Actions and Fatalities in Militarized Interstate Confrontations (MICs), 2002 to 2024
 layout: gsoc_proposal
 project: ISSR
 year: 2025
@@ -10,27 +10,25 @@ organization:
 
 ## Description
 
-This project uses Dark Web discussion board data to examine changes in language surrounding crime/offending over time. This project employs natural language processing.
+This project uses an existing corpus of newspaper articles to derive models that identify (1) whether a MIC occurred, (2) what type of militarized interaction was described, (3) whether fatalities occurred, and (4) the range of fatalities, if any. The newspaper articles have been retrieved based on boolean search terms associated with militarized conflict. However, more than 95% of the articles are false positives for identifying MICs.
 
 ## Duration
 
 Total project length: 175 hours
 
 ## Task ideas
- * Extract and preprocess textual data from online forum posts for NLP analysis.
- * Develop and train NLP models, such as LSTM or BERT, to understand the context, sentiment, and thematic elements of forum discussions.
+ * Extract and preprocess textual data from the newspaper corpora for NLP analysis.
+ * Develop and train NLP models, such as LSTM or BERT, to understand and code the militarized actions and fatalities in each conflict.
 
 
 ## Expected results
- * Create a processed dataset of textual content from online forum posts, ready for NLP tasks.
- * Train an NLP model capable of identifying key themes, sentiments, or user engagement patterns within forum discussions, based on the linguistic features of the posts.
- * If time allows: Analyze the linguistic relationships and communication patterns between forum participants to uncover insights into community dynamics and discourse trends.
+ * The successful project will identify newspaper articles that contain MICs and retrieve the conflict participants (initiator and target), the militarized action, and whether how many fatalities (range) occurred.
 
 ## Requirements
-Ability to code in R or Python; understanding of machine learning and/or natural language processing.
+The project requires the ability to code in Python and knowledge of machine learning and natural language processing.
 
 ## Project difficulty level
-Intermediate
+This project has a moderate level of difficulty.
 
 
 <!-- ## Test
@@ -38,7 +36,9 @@ Please use [this link](https://docs.google.com/document/d/1N_a6GLyPhM0VoShLDIwRa
 
 
 ## Mentors
-  * [Jane Daquin](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Douglas M. Gibler](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Piyush Pawar](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Jean-Christophe Boucher](mailto:human-ai@cern.ch) (University of Calgary)
 
 
 

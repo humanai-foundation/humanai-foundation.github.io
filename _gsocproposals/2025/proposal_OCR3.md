@@ -1,5 +1,5 @@
 ---
-title:  Self-supervised models for automatic OCR
+title:  End-to-End Handwritten Text Recognition for Early Modern Spanish Documents
 layout: gsoc_proposal
 project: RenAIssance
 year: 2025
@@ -11,7 +11,7 @@ organization:
 
 ## Description
 
-Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of self-supervised AI models to recognize text in Spanish printed sources from the seventeenth century.
+Despite its potential for researchers and consumer platforms, end-to-end Handwritten Text Recognition (HDR) remains an underexplored field. Unlike traditional OCR, HDR recognizes entire documents, capturing both text and structural elements such as layout and reading order. Recent models, such as DAN, have demonstrated advancements in whole-document recognition. This project will apply HDR models to early modern Spanish manuscripts, leveraging transformer-based architectures to improve recognition accuracy. By integrating state-of-the-art machine learning with historical document analysis, we aim to enhance the accessibility of handwritten and printed texts from this period while contributing to the broader field of AI-driven humanities research.
 
 ## Duration
 
