@@ -1,11 +1,10 @@
 ---
-title: Healing Stones: reconstructing digitized cultural heritage artifacts with artificial intelligence
+title: Healing Stones - reconstructing digitized cultural heritage artifacts with artificial intelligence
 layout: gsoc_proposal
 project: ArtExtract
 year: 2025
 organization:
   - Alabama
-
 ---
 
 ## Description
