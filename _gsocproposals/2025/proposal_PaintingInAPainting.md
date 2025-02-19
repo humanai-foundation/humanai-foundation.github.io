@@ -1,5 +1,5 @@
 ---
-title: Painting in a Painting - explore hidden images beneath paintings with artificial intelligence
+title: Healing Stones: reconstructing digitized cultural heritage artifacts with artificial intelligence
 layout: gsoc_proposal
 project: ArtExtract
 year: 2025
@@ -10,32 +10,41 @@ organization:
 
 ## Description
 
-In recent years advanced multi spectral and X-ray imaging techniques have allowed art historians and preservation experts to find hidden images beneath famous paintings. These hidden images can have different origins. In some cases they are older paintings or sketches on a canvas that the artist decided to reuse for another painting. Canvases were often reused to save money. In other cases modifications to the original painting are added to conceal controversial details, or just because the artist changed their mind. We propose to use artificial intelligence in combination with high quality multi spectral data to simplify, automatize, and improve the process of analyzing a painting, identify its properties and find hidden images.  
+Over the history of human civilization, works of art and architecture have been subjected to fragmentation: ancient Mayan stele were cut away from monuments by collectors; medieval sculptures from Notre-Dame in Paris were broken into many parts and dispersed in acts of political iconoclasm. Art historians and archaeologists seek to reconstruct these works to more fully understand the cultural meaning and value of these artifacts, but the traditional method of physical refitting is labor intensive and not always possible when fragments are dispersed throughout the world. We propose to use AI in combination with existing digital scan models of fragments to develop a means for reconstructing fragmented cultural heritage artifacts in a virtual space.
+
 
 ## Duration
 
 Total project length: 175 hours
 
 ## Task ideas
- * Extract useful information from multi spectral images of paintings, pigment type, damage, previous restorations.
- * Find if the painting contains a hidden image that has been painted over.
+ * Search for direct fit matches between surfaces (e.g. two parts of something broken)
+ * Identify continuity of carved topography (e.g. parts of the same carved feature, but with gaps).
+ * Identify continuity of surface designs (e.g. parts of the same carved feature, but with gaps).
+ * Identify broader dimensional resemblance (e.g. the shape of the stone blocks used to make that sculptural facade)
+
 
 ## Expected results
- * Prepare a data set of multi spectral images of paintings.
- * Train a computer vision model to identify painting properties
- * Train a computer vision model to identify images hidden beneath paintings
- * (If time permits) train an AI model to retrieve the hidden image.
+ * Develop machine learning models that can reconstruct digitized fragments with at least 80% accuracy
+ * Train AI model to search for matches between digitized fragments for which is original orientation is certain
+ * Test and train AI model using fragments for which original orientation is uncertain
 
 ## Requirements
- * Python
- * PyTorch/TensorFlow
- * Experience with computer vision
+ * Python and some previous experience in Machine Learning.
+ * Ability work with 3D scan data (e.g. .PLY and .OBJ files)
 
 
 ## Project difficulty level
 Medium
 
+##Links
+ * [Notre Dame in color](https://adhc1.ua.edu/notre_dame_in_color/)
+ * [Visual Documentation Lab](https://sites.ua.edu/atokovinine/3d-lab/)
+
+
 ## Mentors
+  * [Jennifer Feltman](https://art.ua.edu/people/jennifer-m-feltman/) (University of Alabama)
+  * [Alexandre Tokovinine](https://anthropology.ua.edu/people/alexandre-tokovinine/) (University of Alabama)
   * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
 
