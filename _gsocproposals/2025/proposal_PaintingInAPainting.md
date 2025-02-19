@@ -36,7 +36,7 @@ Total project length: 175 hours
 ## Project difficulty level
 Medium
 
-##Links
+## Links
  * [Notre Dame in color](https://adhc1.ua.edu/notre_dame_in_color/)
  * [Visual Documentation Lab](https://sites.ua.edu/atokovinine/3d-lab/)
 
