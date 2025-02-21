@@ -1,30 +1,28 @@
 ---
-title: AI-Generated Choreography - from Solos to Duets
+title: AI-Generated Choreography - Dance Beyond Music
 layout: gsoc_proposal
 project: ChoreoAI
 year: 2025
 organization:
   - LBNL
   - Northeastern
-
 ---
 
 ## Description
-
-While the fields of technology and dance have historically not often intersected, recent years have seen the advent of AI-generated choreography using models trained on motion capture of a single dancer ([https://arxiv.org/abs/1907.05297](https://arxiv.org/abs/1907.05297)). This project will expand the state-of-the-art in this intersectional field by exploring duets featuring pairs of dancers, enabling choreography that features authentic interactions between humans & AI models.
+Recent years have seen the advent of AI-generated choreography using models trained on motion capture of a single dancer (see e.g. [https://arxiv.org/abs/1907.05297](https://arxiv.org/abs/1907.05297)), and last year with GSoC 2024, two contributors developed cutting-edge projects to understand improvisational dance duets through the lens of neural networks including GNNs and Transformers. However, many dance traditions view dance as far more than just a visual art, and understanding dance as only a movement prediction project risks overly reducing the perception of dance in digital form. Moreover, while existing multimodal dance embeddings focus primarily on pairings of music (e.g. "beats") to movement, human movement can incorporate and be influenced by diverse modalities well beyond music including speech, imagery, writing, touch, architecture, proprioception, sculpture, and more. By exploring diverse multimodal embeddings of dance in an artist-driven framework, this project will imagine how to use AI to bring expansiveness, rather than reductiveness and conformity, into our digital renderings of dance. 
 
 ## Duration
 Total project length: 175 hours
 
 ## Task ideas
- * Extract pose information from curated videos of dance duets
  * Train a GNN and/or Transformer model to analyze this data and generate new duet interaction ideas
 
 ## Expected results
- * Create a dataset of dynamic point-cloud data corresponding to extracted motion capture poses from videos of dance duets
- * Train an AI model that can generate the movements of Dancer #2 conditioned on the inputs of Dancer #1 and/or invent new, physically-plausible duet phrases
- * If time permits: Learn key relationships between parts of the body of each dancer that are integral to the dynamics of the duet
- * We will collaborate with the original dancers to use the model outputs to inspire new performance material
+ * Create a dataset of dynamic point-cloud data corresponding to extracted motion capture poses from videos of dances
+ * Craft a (semi-)supervised paradigm for constructing paired modalities corresponding to the dance movements, e.g. natural language descriptions, spoken word, music, visual art, 3D architectural renderings, and more
+ * Design a multimodal embedding scheme for these highly diverse modalities 
+ * Train an any-to-any generative model that is able to translate an arbitrary modality input into 3D movement (and vice-versa)
+ * We will work closely with the dance artists to ensure that the model design is artist-led
 
 ## Requirements
 Participants should be comfortable with standard data science software including Python, Git, Numpy, Matplotlib, and Pandas. Previous experience in Machine Learning, either in TensorFlow or PyTorch, is preferred. While previous experience in dance or the performing arts is not needed, an interest in the artistic and open-ended aesthetic dimensions of the project is required. Strong interpersonal & communication skills are essential.
@@ -39,9 +37,6 @@ Please use this [link](https://docs.google.com/document/d/18yE220TOWpXUddu8lRX2K
   * [Mariel Pettee](mailto:human-ai@cern.ch) (Lawrence Berkeley National Laboratory)
   * [Ilya Vidrin](mailto:human-ai@cern.ch) (Northeastern University)
 
-
-
-
-Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
+Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai-choreo@cern.ch](mailto:human-ai-choreo@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
 
 
