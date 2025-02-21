@@ -14,9 +14,6 @@ Recent years have seen the advent of AI-generated choreography using models trai
 ## Duration
 Total project length: 175 hours
 
-## Task ideas
- * Train a GNN and/or Transformer model to analyze this data and generate new duet interaction ideas
-
 ## Expected results
  * Create a dataset of dynamic point-cloud data corresponding to extracted motion capture poses from videos of dances
  * Craft a (semi-)supervised paradigm for constructing paired modalities corresponding to the dance movements, e.g. natural language descriptions, spoken word, music, visual art, 3D architectural renderings, and more
