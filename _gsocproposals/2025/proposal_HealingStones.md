@@ -1,7 +1,7 @@
 ---
-title: Healing Stones - reconstructing digitized cultural heritage artifacts with artificial intelligence
+title: Reconstructing digitized cultural heritage artifacts with artificial intelligence
 layout: gsoc_proposal
-project: ArtExtract
+project: HealingStones
 year: 2025
 organization:
   - Alabama
@@ -9,7 +9,7 @@ organization:
 
 ## Description
 
-Over the history of human civilization, works of art and architecture have been subjected to fragmentation: ancient Mayan stele were cut away from monuments by collectors; medieval sculptures from Notre-Dame in Paris were broken into many parts and dispersed in acts of political iconoclasm. Art historians and archaeologists seek to reconstruct these works to more fully understand the cultural meaning and value of these artifacts, but the traditional method of physical refitting is labor intensive and not always possible when fragments are dispersed throughout the world. We propose to use AI in combination with existing digital scan models of fragments to develop a means for reconstructing fragmented cultural heritage artifacts in a virtual space.
+Over the history of human civilization, works of art and architecture have been subjected to fragmentation: ancient Mayan stele were cut away from monuments by collectors; medieval sculptures from Notre-Dame in Paris were broken into many parts and dispersed in acts of political iconoclasm. Art historians and archaeologists seek to reconstruct these works to more fully understand their cultural meaning and value, but the traditional method of physical refitting is labor intensive and not always possible when fragments are dispersed throughout the world. We propose to use AI in combination with existing digital scan models of fragments to develop a means for reconstructing fragmented cultural heritage artifacts in a virtual space.
 
 
 ## Duration
