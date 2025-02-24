@@ -1,5 +1,5 @@
 ---
-title:  Automating Text Recognition and Transliteration of Historical Documents with convolutional - recurrent architectures
+title:  Automating text recognition and transliteration of historical documents with weighted convolutional - recurrent architectures
 layout: gsoc_proposal
 project: RenAIssance
 year: 2025
