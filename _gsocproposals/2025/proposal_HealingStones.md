@@ -1,5 +1,5 @@
 ---
-title: Reconstructing digitized cultural heritage artifacts with artificial intelligence
+title: Healing Stones - Reconstructing digitized cultural heritage artifacts with artificial intelligence
 layout: gsoc_proposal
 project: HealingStones
 year: 2025
