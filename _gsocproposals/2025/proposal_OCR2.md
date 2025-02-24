@@ -1,5 +1,5 @@
 ---
-title:  Text Recognition with Transformer Models
+title:  Text recognition with transformer models
 layout: gsoc_proposal
 project: RenAIssance
 year: 2025
