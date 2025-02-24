@@ -10,7 +10,7 @@ organization:
 
 ## Description
 
-In recent years advanced multi spectral and X-ray imaging techniques have allowed art historians and preservation experts to find hidden images beneath famous paintings. These hidden images can have different origins. In some cases they are older paintings or sketches on a canvas that the artist decided to reuse for another painting. Canvases were often reused to save money. In other cases modifications to the original painting are added to conceal controversial details, or just because the artist changed their mind. We propose to use artificial intelligence in combination with high quality multi spectral data to simplify, automatize, and improve the process of analyzing a painting, identify its properties and find hidden images.  
+In recent years advanced multi spectral and X-ray imaging techniques have allowed art historians and preservation experts to find hidden images beneath famous paintings. These hidden images can have different origins. In some cases they are older paintings or sketches on a canvas that the artist decided to reuse for another painting. Canvases were often reused to save money. In other cases modifications to the original painting are added to conceal controversial details, or just because the artist changed their mind. We propose to use artificial intelligence in combination with high quality multi spectral data to simplify, automatize, and improve the process of analyzing a painting, identify its properties and find hidden images. The goal of this year’s project will expand upon [last year’s project](https://medium.com/@soyoungpark.psy/how-i-designed-hidden-art-extraction-tool-with-siamese-networks-part4-gsoc-24-e3387b3ae50b)  
 
 ## Duration
 
