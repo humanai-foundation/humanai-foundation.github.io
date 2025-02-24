@@ -1,5 +1,5 @@
 ---
-title:  End-to-End Handwritten Text Recognition for Early Modern Spanish Documents
+title:  End-to-end handwritten text recognition for early modern spanish documents
 layout: gsoc_proposal
 project: RenAIssance
 year: 2025
