@@ -32,8 +32,8 @@ Python and some previous experience in Machine Learning.
 ## Difficulty level
 Medium
 
-<!-- ## Test
-Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/Ee6S21QpgmxFj4szyRXqMAsBnMIs1TqsiPC4vP6-kRxrRw?e=zkxpoU) to access the test for this project. -->
+## Test
+Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_ua_edu/EeSz8D6iYPxHhzfQD3GGzsYBARpsSkbEDZWzoQH7hIH4lg?e=gMOaR4&xsdata=MDV8MDJ8ZXVzYWlAdWEuZWR1fDIzZDVmYjNmYjYzYjQ0YzljYTU0MDhkZDU3ZjE1MDZhfDJhMDA3MjhlZjBkMDQwYjRhNGU4Y2U0MzNmM2ZiY2E3fDB8MHw2Mzg3NjM0MTYxNDQxNDUxMTR8VW5rbm93bnxUV0ZwYkdac2IzZDhleUpGYlhCMGVVMWhjR2tpT25SeWRXVXNJbFlpT2lJd0xqQXVNREF3TUNJc0lsQWlPaUpYYVc0ek1pSXNJa0ZPSWpvaVRXRnBiQ0lzSWxkVUlqb3lmUT09fDB8fHw%3d&sdata=RUVjT2J4U2N1cjlyNzl2YXd4RkVTV3pkZ1UvWkJhYWVOSjltVVJwYkhIOD0%3d) to access the test for this project.
 
 ## Mentors
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
