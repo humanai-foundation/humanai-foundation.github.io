@@ -28,12 +28,12 @@ Participants should be comfortable with standard data science software including
 Hard
 
 ## Test
-Please use this [link](https://docs.google.com/document/d/18yE220TOWpXUddu8lRX2KDuuJUgDyL9PItDjxOjJkCI/edit?usp=sharing) to access the test for this project.
+<!-- Please use this [link](https://docs.google.com/document/d/18yE220TOWpXUddu8lRX2KDuuJUgDyL9PItDjxOjJkCI/edit?usp=sharing) to access the test for this project. --> 
 
 ## Mentors
-  * [Mariel Pettee](mailto:human-ai@cern.ch) (Lawrence Berkeley National Laboratory)
-  * [Ilya Vidrin](mailto:human-ai@cern.ch) (Northeastern University)
+  * [Mariel Pettee](mailto:human.ai.choreo@gmail.com) (Lawrence Berkeley National Laboratory)
+  * [Ilya Vidrin](mailto:human.ai.choreo@gmail.com) (Northeastern University)
 
-Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai-choreo@cern.ch](mailto:human-ai-choreo@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
+Please **DO NOT** contact mentors directly by email. Instead, please email [human.ai.choreo@gmail.com](mailto:human.ai.choreo@gmail.com) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
 
 
