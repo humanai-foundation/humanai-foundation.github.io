@@ -1,5 +1,5 @@
 ---
-title: AI-Generated Choreography - Dance Beyond Music
+title: AI-Enabled Choreography - Dance Beyond Music
 layout: gsoc_proposal
 project: ChoreoAI
 year: 2025
