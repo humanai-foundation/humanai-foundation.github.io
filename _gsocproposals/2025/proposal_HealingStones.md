@@ -47,8 +47,8 @@ Medium
   * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
 
-## Test
-Please use [this link](https://docs.google.com/document/d/e/2PACX-1vQojnszopRSV0t5jZsEL3PKOCWOrkUflBnnpIJp_Gb9Jtalky4TAnnPlhltwfU60HLiuNdtaRaLurV4/pub) to access the test for this project.
+<!--## Test
+Please use [this link](https://docs.google.com/document/d/e/2PACX-1vQojnszopRSV0t5jZsEL3PKOCWOrkUflBnnpIJp_Gb9Jtalky4TAnnPlhltwfU60HLiuNdtaRaLurV4/pub) to access the test for this project.-->
 
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
