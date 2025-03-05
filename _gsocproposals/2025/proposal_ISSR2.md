@@ -38,8 +38,8 @@ The project requires the ability to code in Python and knowledge of machine lear
 ## Project difficulty level
 This project has a moderate level of difficulty.
 
-<!-- ## Test
-Please use this [link](https://docs.google.com/document/d/17AETsJPb5nHzsnnjTbZMvu_YbgIUwG5dxQ38ILiuEa4/edit?usp=sharing) to access the test for this project. -->
+## Test
+Please use this [link](https://docs.google.com/document/d/e/2PACX-1vTkL1iYefV6oSjz7YJDEO5CkNShGlBFVm2fXePs2oWyUS_5TfFNHf7o61fPrhpyzyVFcFVhBY3RtC6K/pub) to access the test for this project.
 
 ## Mentors
   * [Despina Stavrinos](mailto:human-ai@cern.ch) (University of Alabama)
