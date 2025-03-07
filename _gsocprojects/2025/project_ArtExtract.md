@@ -3,8 +3,7 @@ project: ArtExtract
 layout: default
 logo: artextract.jpg
 description: |
-   The ArtExtract project aims at using artificial intelligence in combination with multi-spectral imaging techniques to gain insight in ancient paintings and other form of fine art. 
-
+   The ArtExtract project leverages artificial intelligence and multi-spectral imaging techniques to uncover hidden details in ancient paintings and fine art. By analyzing underlying layers, brushstrokes, and pigment compositions, we aim to gain deeper insights into historical artworks and artistic techniques.
 ---
 
 {% include gsoc_project.ext %}
