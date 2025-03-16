@@ -31,8 +31,8 @@ The project requires the ability to code in Python and knowledge of machine lear
 This project has a moderate level of difficulty.
 
 
-<!-- ## Test
-Please use [this link](https://docs.google.com/document/d/1N_a6GLyPhM0VoShLDIwRaN8W6EXlE_PpHHstIKgcmjw/edit) to access the test for this project. -->
+## Test
+Please use [this link](/assets/GSoC_test_MIC.pdf) to access the test for this project.
 
 
 ## Mentors
