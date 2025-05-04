@@ -6,7 +6,9 @@ year: 2025
 organization:
   - Alabama
   - Delhi
-
+  - Knoxville
+  - Yale
+  
 ---
 
 ## Description
@@ -43,6 +45,8 @@ Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_
   * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
   * [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama)
   * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
+  * [Harrison Meadows](mailto:human-ai@cern.ch) (University of Tennessee Knoxville)
+  * [Nicholas Jones](mailto:human-ai@cern.ch) (Yale University)
 
 
 
