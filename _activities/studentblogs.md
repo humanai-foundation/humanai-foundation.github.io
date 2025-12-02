@@ -13,6 +13,15 @@ layout: default
 
 This is a collection of blog posts from GSoC students who worked with HumanAI.
 
+### Google Summer of Code 2025
+
+<table class="table table-hover table-striped">
+	
+  <tr>
+	<td><a href="https://medium.com/@shashankshekharsingh1205/from-idea-to-user-tool-continuing-my-journey-with-humanai-in-the-google-summer-of-code-2025-96243994fd4f" target="_blank">"Tool for Historical Text Recognition using Weighted CRNN Model" by Shashank Shekhar Singh</a></td>
+  </tr>
+</table>
+
 ### Google Summer of Code 2024
 
 <table class="table table-hover table-striped">
