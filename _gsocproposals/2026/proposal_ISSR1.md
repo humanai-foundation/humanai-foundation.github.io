@@ -2,7 +2,7 @@
 title:  Coding Actions and Fatalities in Militarized Interstate Confrontations (MICs), 2002 to 2024
 layout: gsoc_proposal
 project: ISSR
-year: 2025
+year: 2026
 organization:
   - Alabama
 

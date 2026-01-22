@@ -2,7 +2,7 @@
 title:  Text recognition with transformer models
 layout: gsoc_proposal
 project: RenAIssance
-year: 2025
+year: 2026
 organization:
   - Alabama
   - Delhi
@@ -15,7 +15,7 @@ organization:
 
 Transcription of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on transformers (e.g. VIT-RNN or CNN-TF or VIT-TF) to recognize text in Spanish printed sources from the seventeenth century. Transformer-based models have been fine-tuned to improve transcription accuracy, particularly for degraded and complex historical texts. Training on a diverse dataset that combines expert transcriptions and synthetic data has enabled better generalization across various typographical styles.
 
-For GSoC 2025, this project aims to expand the dataset, to help the model finetune to handle handwritten documents as well. The goal is to increase our fine-tuning on larger datasets incorporating diverse typographical styles both printed and handwritten. 
+For GSoC 2026, this project aims to expand the dataset, to help the model finetune to handle handwritten documents as well. The goal is to increase our fine-tuning on larger datasets incorporating diverse typographical styles both printed and handwritten. 
 
 ## Duration
 

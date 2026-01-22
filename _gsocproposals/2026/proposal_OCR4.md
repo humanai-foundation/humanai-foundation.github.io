@@ -2,7 +2,7 @@
 title:  Synthetic renaissance text generation with generative models
 layout: gsoc_proposal
 project: RenAIssance
-year: 2025
+year: 2026
 organization:
   - Alabama
   - Delhi

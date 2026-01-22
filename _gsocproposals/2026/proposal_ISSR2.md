@@ -2,7 +2,7 @@
 title:  Communication Analysis Tool for Human-AI Interaction Driving Simulator Experiments
 layout: gsoc_proposal
 project: ISSR
-year: 2025
+year: 2026
 organization:
   - Alabama
 

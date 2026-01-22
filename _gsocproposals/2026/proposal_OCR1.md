@@ -2,7 +2,7 @@
 title:  Automating text recognition and transliteration of historical documents with weighted convolutional - recurrent architectures
 layout: gsoc_proposal
 project: RenAIssance
-year: 2025
+year: 2026
 organization:
   - Alabama
   - Delhi

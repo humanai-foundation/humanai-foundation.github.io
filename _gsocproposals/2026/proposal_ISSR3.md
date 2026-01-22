@@ -2,7 +2,7 @@
 title: AI-Powered Behavioral Analysis for Suicide Prevention, Substance Use, and Mental Health Crisis Detection with Longitudinal Geospatial Crisis Trend Analysis
 layout: gsoc_proposal
 project: ISSR
-year: 2025
+year: 2026
 organization:
   - Alabama
 

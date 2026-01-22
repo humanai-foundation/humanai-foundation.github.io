@@ -1,8 +1,8 @@
 ---
-title:  Synthetic renaissance text generation with generative models
+title:  End-to-end handwritten text recognition for early modern spanish documents
 layout: gsoc_proposal
 project: RenAIssance
-year: 2025
+year: 2026
 organization:
   - Alabama
   - Delhi
@@ -13,29 +13,26 @@ organization:
 
 ## Description
 
-Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts.
-This project aims to enhance text recognition capabilities by integrating generative models to simulate Renaissance-era printing imperfections and augment OCR training datasets. The project will focus on the Spanish printed sources from the 17th century.
+Despite its potential for researchers and consumer platforms, end-to-end Handwritten Text Recognition (HDR) remains an underexplored field. Unlike traditional OCR, HDR recognizes entire documents, capturing both text and structural elements such as layout and reading order. Recent models, such as DAN, have demonstrated advancements in whole-document recognition. This project will apply HDR models to early modern Spanish manuscripts, leveraging transformer-based architectures to improve recognition accuracy. By integrating state-of-the-art machine learning with historical document analysis, we aim to enhance the accessibility of handwritten and printed texts from this period while contributing to the broader field of AI-driven humanities research.
 
 ## Duration
 
 Total project length: 175 hours
 
 ## Task ideas
- * Use generative models (GANs or diffusion models) to generate synthetic Renaissance-style printed text with realistic printing defects, ink bleed, and paper degradation.
- * Simulate historical printing techniques and fine-tune models with historical text datasets.
- * Use the synthetic printed text to improve current models.
+ * Creation of an self-supervised AI model capable of performing text recognition
 
 ## Expected results
- * Develop a generative models capable of producing Renaissance-style printed text with realistic degradation effects.
- * Generate a dataset of synthetic Renaissance text.
- * Improve OCR model performance on historical Spanish texts using the synthetic text, achieving at least 80% text extraction accuracy.
+ * Machine learning models will be trained to perform text recognition of non-standard printed text
+ * AI should be able to extract text with at least 80% accuracy
+
 
 
 ## Requirements
 Python and some previous experience in Machine Learning.
 
 ## Difficulty level
-Medium
+Advanced
 
 <!--
 ## Test

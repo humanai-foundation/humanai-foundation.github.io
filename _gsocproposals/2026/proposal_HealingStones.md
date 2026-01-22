@@ -2,7 +2,7 @@
 title: Healing Stones - Reconstructing digitized cultural heritage artifacts with artificial intelligence
 layout: gsoc_proposal
 project: HealingStones
-year: 2025
+year: 2026
 organization:
   - Alabama
 ---

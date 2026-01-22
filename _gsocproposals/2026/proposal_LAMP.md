@@ -2,7 +2,7 @@
 title: Late Antiquity Modelling Project 
 layout: gsoc_proposal
 project: LAMP
-year: 2025
+year: 2026
 organization:
     - Alabama
 

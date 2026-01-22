@@ -2,7 +2,7 @@
 title: Learning the Susceptible-Infected-Removed Model
 layout: gsoc_proposal
 project: SIRA
-year: 2025
+year: 2026
 organization:
   - FSU
   - Tennessee

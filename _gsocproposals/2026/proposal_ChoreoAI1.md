@@ -2,7 +2,7 @@
 title: AI-Enabled Choreography - Dance Beyond Music
 layout: gsoc_proposal
 project: ChoreoAI
-year: 2025
+year: 2026
 organization:
   - LBNL
   - Northeastern
