@@ -1,5 +1,5 @@
 ---
-title:  End-to-end handwritten text recognition for early modern spanish documents
+title: End-to-end handwritten text recognition for early modern Spanish documents with LLM pipeline integration
 layout: gsoc_proposal
 project: RenAIssance
 year: 2026
@@ -8,7 +8,6 @@ organization:
   - Delhi
   - Knoxville
   - Yale
-
 ---
 
 ## Description
@@ -20,18 +19,21 @@ Despite its potential for researchers and consumer platforms, end-to-end Handwri
 Total project length: 175 hours
 
 ## Task ideas
- * Creation of an self-supervised AI model capable of performing text recognition
+
+- Creation of a self-supervised AI model capable of performing text recognition
+- Integration of LLM models such as Gemini3 to improve OCR output
 
 ## Expected results
- * Machine learning models will be trained to perform text recognition of non-standard printed text
- * AI should be able to extract text with at least 80% accuracy
 
-
+- Machine learning models will be trained to perform text recognition of non-standard printed text
+- AI should be able to extract text with at least 90% accuracy
 
 ## Requirements
+
 Python and some previous experience in Machine Learning.
 
 ## Difficulty level
+
 Advanced
 
 <!--
@@ -40,17 +42,14 @@ Please use [this link](https://bama365-my.sharepoint.com/:w:/g/personal/xgranja_
 -->
 
 ## Mentors
-  * [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama)
-  * [Nicholas Jones](mailto:human-ai@cern.ch) (Yale University)
-  * [Harrison Meadows](mailto:human-ai@cern.ch) (University of Tennessee Knoxville)
-  * [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
 
-
+- [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
+- [Xabier Granja](mailto:human-ai@cern.ch) (University of Alabama)
+- [Nicholas Jones](mailto:human-ai@cern.ch) (Yale University)
+- [Harrison Meadows](mailto:human-ai@cern.ch) (University of Tennessee Knoxville)
+- [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
-
-
 
 <!-- ## Links
   * [Paper 1](https://arxiv.org/abs/1807.11916)
