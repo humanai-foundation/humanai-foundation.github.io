@@ -8,6 +8,7 @@ Machine Learning for Science (ML4Sci) is an open-source organization that brings
 
 ## ML4SCI in GSoC 2026
 The ML4Sci open source organization is participating in the [2026 Google Summer of Code](https://summerofcode.withgoogle.com/). If you are a student interested in our [projects](https://ml4sci.org/activities/gsoc2026.html) please check our [ideas page](https://ml4sci.org/gsoc/2026/summary.html). ML4Sci is an umbrella organization that welcomes other projects and organizations related to machine-learning for science. Please contact the admins at [ml4-sci@cern.ch](mailto:ml4-sci@cern.ch) if you are interested in participating as a project.
+
 ![GSOC](https://ml4sci.org/images/GSoC/GSoC-icon-192.png)
 
 Please take a look at our [GSoC Page](https://ml4sci.org/activities/gsoc2026.html) for more details.
