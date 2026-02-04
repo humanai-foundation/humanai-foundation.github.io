@@ -1,4 +1,4 @@
-<img width="2041" height="1168" alt="image" src="https://github.com/user-attachments/assets/52809dd3-bf69-4c6e-bb5c-46ad2dfa15e6" /># ML4SCI.github.io
+# ML4SCI.github.io
 Machine Learning for Science github site
 
 * Live at https://ml4sci.org
