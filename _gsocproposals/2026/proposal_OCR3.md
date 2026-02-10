@@ -1,5 +1,5 @@
 ---
-title: End-to-end handwritten text recognition for early modern Spanish documents with LLM pipeline integration
+title: End-to-end handwritten text recognition for early modern Spanish documents with LLM or Vision-Language Model pipeline creation
 layout: gsoc_proposal
 project: RenAIssance
 year: 2026
@@ -12,7 +12,7 @@ organization:
 
 ## Description
 
-Despite its potential for researchers and consumer platforms, end-to-end Handwritten Text Recognition (HDR) remains an underexplored field. Unlike traditional OCR, HDR recognizes entire documents, capturing both text and structural elements such as layout and reading order. Recent models, such as DAN, have demonstrated advancements in whole-document recognition. This project will apply HDR models to early modern Spanish manuscripts, leveraging transformer-based architectures to improve recognition accuracy. By integrating state-of-the-art machine learning with historical document analysis, we aim to enhance the accessibility of handwritten and printed texts from this period while contributing to the broader field of AI-driven humanities research.
+Despite its potential for researchers and consumer platforms, end-to-end Handwritten Text Recognition (HDR) remains an underexplored field. Unlike traditional OCR, HDR recognizes entire documents, capturing both text and structural elements such as layout and reading order. Recent models, such as DAN, have demonstrated advancements in whole-document recognition. This project will apply HDR models to early modern Spanish manuscripts, leveraging transformer-based architectures to improve recognition accuracy. By integrating state-of-the-art machine learning with historical document analysis, we aim to enhance the accessibility of handwritten and printed texts from this period while contributing to the broader field of AI-driven humanities research. This project aims to create a pipeline that fully enables VLM or LLM models throughout the whole OCR process, instead of as a last stage.
 
 ## Duration
 
@@ -21,7 +21,7 @@ Total project length: 175 hours
 ## Task ideas
 
 - Creation of a self-supervised AI model capable of performing text recognition
-- Integration of LLM models such as Gemini3 to improve OCR output
+- Integration of LLM or VLM models such as Gemini3 to improve OCR output
 
 ## Expected results
 

@@ -1,5 +1,5 @@
 ---
-title: Automating text recognition and transcription of historical documents with weighted convolutional - recurrent architectures and LLM models
+title: Automating text recognition and transcription of historical documents with weighted convolutional - recurrent architectures and LLM integration
 layout: gsoc_proposal
 project: RenAIssance
 year: 2026
@@ -12,7 +12,7 @@ organization:
 
 ## Description
 
-Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on weighted convolutional - recurrent architectures (CNN-RNN) and LLM models to recognize text in Spanish printed sources from the seventeenth century.
+Transliteration of text from centuries-old works represents a research area that is underserved by current tools, such as Adobe Acrobat’s OCR. While these resources can perform text recognition from clearly printed modern sources, they are incapable of extracting textual data from early forms of print, much less manuscripts. This project will focus on the application of hybrid end-to-end models based on weighted convolutional - recurrent architectures (CNN-RNN) and LLM models as a late-stage step to recognize text in Spanish printed sources from the seventeenth century.
 
 ## Duration
 
