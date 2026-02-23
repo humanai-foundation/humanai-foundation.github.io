@@ -39,10 +39,9 @@ Python programming, ML/DL knowledge, Natural language processing knowledge and e
 
 This project has a moderate level of difficulty.
 
-<!--
-## Test
-Please use [this link](/assets/GSoC_test_MIC.pdf) to access the test for this project.
--->
+## Tests
+
+Please use [this link](/assets/ISSR%20Project%2001%20Test%202026.pdf) to access the test for this project.
 
 ## Mentors
 

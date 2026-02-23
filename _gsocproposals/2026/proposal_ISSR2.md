@@ -54,10 +54,10 @@ Total project length: 175 hours, Medium
 
 Intermediate to Advanced – Suitable for students with prior experience in NLP, social media analysis, and geospatial data visualization.
 
-<!--
-## Test
-Please use [this link](/assets/GSoC_test_MIC.pdf) to access the test for this project.
--->
+## Tests
+
+Please use [this link](/assets/ISSR%20Project%2002%20Test%202026.pdf) to access the test for this project.
+
 
 ## Mentors
 
