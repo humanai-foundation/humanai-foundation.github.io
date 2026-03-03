@@ -40,7 +40,7 @@ Medium
 
 ## Tests
 
-Please use [this link](/assets/GSoC%202026%20AutoEIT%20Tests.pdf) to access the test for this project.
+Please use [this link](https://niuits-my.sharepoint.com/:w:/g/personal/a1757262_mail_niu_edu/IQBm42nzMg7BSqiLil-2-5KIAY9d3SUDEw9psCWIfgAzIjI) to access the test for this project.
 
 ## Mentors
 
