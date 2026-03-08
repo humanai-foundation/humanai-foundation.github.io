@@ -62,6 +62,7 @@ Please use [this link](/assets/ISSR%20Project%2002%20Test%202026.pdf) to access 
 ## Mentors
 
 - [David M. White](mailto:human-ai@cern.ch) (University of Alabama)
+- [Hailey Richardson](mailto:human-ai@cern.ch) (University of Alabama)
 - [Dr. Andrea Underhill](mailto:human-ai@cern.ch) (University of Alabama)
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
