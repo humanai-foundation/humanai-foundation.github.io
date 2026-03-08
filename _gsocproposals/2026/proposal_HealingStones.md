@@ -46,15 +46,15 @@ Medium
 - [Notre Dame in color](https://adhc1.ua.edu/notre_dame_in_color/)
 - [Visual Documentation Lab](https://sites.ua.edu/atokovinine/3d-lab/)
 
+## Test
+
+Please use [this link](https://docs.google.com/document/d/e/2PACX-1vRgBwVAVn_XZkecZ_axHryevSbVue_nLG6uVJK5nY_l69JdzqENoYCfAo20kR361-aPDtsO640X9vN9/pub) to access the test for this project.
+
 ## Mentors
 
 - [Jennifer Feltman](https://art.ua.edu/people/jennifer-m-feltman/) (University of Alabama)
 - [Alexandre Tokovinine](https://anthropology.ua.edu/people/alexandre-tokovinine/) (University of Alabama)
 - [Emanuele Usai](mailto:human-ai@cern.ch) (University of Alabama)
 - [Sergei Gleyzer](mailto:human-ai@cern.ch) (University of Alabama)
-
-## Test
-
-Please use [this link](https://docs.google.com/document/d/e/2PACX-1vRgBwVAVn_XZkecZ_axHryevSbVue_nLG6uVJK5nY_l69JdzqENoYCfAo20kR361-aPDtsO640X9vN9/pub) to access the test for this project.
 
 Please **DO NOT** contact mentors directly by email. Instead, please email [human-ai@cern.ch](mailto:human-ai@cern.ch) with Project Title and **include your CV** and **test results**. The mentors will then get in touch with you.
