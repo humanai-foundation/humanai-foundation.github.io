@@ -262,3 +262,9 @@ body {
 .alignright {
   float: right;
 }
+
+.organiser_names{
+font-family: Georgia, 'Times New Roman', Times, serif;
+font-size: 18px;
+font-weight: 100;
+}
