@@ -2,6 +2,10 @@
 {% assign year_position = url_tokens.size | minus: 2 %}
 {% assign year = url_tokens[year_position] %}
 
+# GSoC {{ year }} Projects
+
+{{ page.description }}
+
 ## Project Proposals
 
 {% for project in site.gsocprojects %}
