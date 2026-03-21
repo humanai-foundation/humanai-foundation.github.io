@@ -20,6 +20,21 @@ X Ray based machines are not available to many researchers and are quite uncommo
 
 This proposal introduces a **software-first, AI-driven reconstruction pipeline** that aims to infer hidden structures and compositions directly from standard RGB images, eliminating the dependency on specialized imaging equipment.
 
+1. Hardware Dependency & Lack of Scalability
+The Challenge: Traditional hidden image detection relies heavily on X-ray and Multispectral imaging. These methods require specialized, high-cost hardware, controlled environments, and expert handling, making them inaccessible to smaller institutions and independent researchers.
+
+The Solution: By utilizing an RGB-based AI Inference Pipeline, my solution democratizes art exploration. It eliminates the need for expensive physical imaging by using deep learning to "infer" underlying layers directly from standard digital photographs.
+
+2. Manual Identification of Layered History
+The Challenge: Artworks often contain "overpaintings"—instances where a canvas was reused or controversial details were concealed. Identifying whether a painting is a single layer or a composite of historical modifications currently requires extensive manual cross-referencing and physical testing.
+
+The Solution: I propose a Generative Reconstruction Pipeline. Instead of just identifying the existence of a hidden layer, my system uses Semantic Segmentation (Mask2Former) and Inpainting (Stable Diffusion) to actively reconstruct and visualize these obscured sketches and compositions automatically.
+
+3. Data Complexity & Information Extraction
+The Challenge: Extracting actionable insights from a painting—such as pigment degradation, surface damage, or previous restoration "re-touches"—is a labor-intensive task that involves parsing complex raw spectral data.
+
+The Solution: My architecture integrates an End-to-End Automated Pipeline. By combining Canny-driven edge detection with ControlNet, the system automates the extraction of structural information and damage patterns, providing historians with immediate, high-fidelity visual data without manual intervention.
+
 The core idea is to leverage recent advancements in **generative AI, diffusion models, and structure-preserving networks** to reconstruct underlying visual information from degraded or modified paintings. Instead of explicitly detecting hidden layers through physical imaging, this system performs **intelligent reconstruction and inference**, enabling a broader and more accessible approach to hidden art exploration.
 
 The pipeline operates in multiple stages:
