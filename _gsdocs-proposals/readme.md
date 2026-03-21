@@ -1,13 +1,14 @@
 
+
 title: Painting in a Painting - AI-driven Hidden Image Reconstruction without Multispectral Dependency
 layout: gsoc_proposal
-project: ArtExtract
+project: ArtExtraction(Srishti-1806)
 year: 2026
 organization:
 
 * Alabama
 
----
+
 
 ## Description
 
@@ -27,7 +28,6 @@ The pipeline operates in multiple stages:
 
 This approach not only restores damaged artworks but also provides a **probabilistic reconstruction of hidden compositions**, making it a powerful tool for historians, researchers, and digital archivists.
 
----
 
 ## Why this proposal is an improvement
 
@@ -53,12 +53,10 @@ Rather than only identifying whether a hidden image exists, this approach attemp
 
 The system is designed with **FastAPI and Docker-based deployment**, ensuring reproducibility, scalability, and ease of integration into real-world applications.
 
----
 
 ## Duration
 
 Total project length: 175 hours
-
 
 
 ## Task ideas
@@ -69,8 +67,6 @@ Total project length: 175 hours
 * Apply ControlNet for structure preservation during generation
 * Implement enhancement and super-resolution modules
 * Optimize pipeline performance for CPU/GPU environments
-* (Optional) Extend system to incorporate multispectral data if available
-
 
 
 ## Expected results
@@ -81,7 +77,6 @@ Total project length: 175 hours
 * Deployment-ready API for real-world usage
 * Documentation covering architecture, implementation, and optimization
 
----
 
 ## Tech stack
 
@@ -98,7 +93,6 @@ Total project length: 175 hours
 * **Deployment:** Docker
 * **Utilities:** Python-dotenv, Hugging Face Hub
 
----
 
 ## Why my proposal stands out
 
@@ -112,7 +106,6 @@ This proposal stands out due to its **practicality, innovation, and real-world a
 
 Overall, this project bridges the gap between **academic research and practical implementation**, offering a novel approach to exploring hidden art using modern AI techniques.
 
----
 
 ## Requirements
 
@@ -121,13 +114,11 @@ Overall, this project bridges the gap between **academic research and practical 
 * Computer vision fundamentals
 * Basic understanding of deep learning and generative models
 
----
 
 ## Project difficulty level
 
 Medium to High
 
----
 
 ## Mentors
 
