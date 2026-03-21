@@ -14,6 +14,10 @@ organization:
 
 Traditional approaches to uncover hidden images beneath paintings rely heavily on multispectral and X-ray imaging. While effective, these methods require expensive hardware, controlled environments, and are not scalable for widespread use.
 
+X Ray based machines are not available to many researchers and are quite uncommon too. My solutopn focuses on:
+1) Shifting database dependency to Generative AI solutions.
+2) Making this solution scalable and availabe to all by refining the outputs using existing imprinting models using existing ML tools.
+
 This proposal introduces a **software-first, AI-driven reconstruction pipeline** that aims to infer hidden structures and compositions directly from standard RGB images, eliminating the dependency on specialized imaging equipment.
 
 The core idea is to leverage recent advancements in **generative AI, diffusion models, and structure-preserving networks** to reconstruct underlying visual information from degraded or modified paintings. Instead of explicitly detecting hidden layers through physical imaging, this system performs **intelligent reconstruction and inference**, enabling a broader and more accessible approach to hidden art exploration.
