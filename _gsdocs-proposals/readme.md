@@ -1,5 +1,3 @@
-
-
 title: Painting in a Painting - AI-driven Hidden Image Reconstruction without Multispectral Dependency
 layout: gsoc_proposal
 project: ArtExtraction(Srishti-1806)
@@ -8,136 +6,251 @@ organization:
 
 * Alabama
 
-
+---
 
 ## Description
 
-Traditional approaches to uncover hidden images beneath paintings rely heavily on multispectral and X-ray imaging. While effective, these methods require expensive hardware, controlled environments, and are not scalable for widespread use.
+Traditional approaches to uncover hidden images beneath paintings rely heavily on multispectral and X-ray imaging. While effective, these methods require expensive hardware, controlled environments, and expert handling, making them difficult to scale and inaccessible to many researchers.
 
-X Ray based machines are not available to many researchers and are quite uncommon too. My solutopn focuses on:
-1) Shifting database dependency to Generative AI solutions.
-2) Making this solution scalable and availabe to all by refining the outputs using existing imprinting models using existing ML tools.
+X-ray-based systems are not widely available, especially to smaller institutions and independent historians. This proposal addresses these limitations by introducing a **software-first, AI-driven reconstruction pipeline** that operates solely on standard RGB images.
 
-This proposal introduces a **software-first, AI-driven reconstruction pipeline** that aims to infer hidden structures and compositions directly from standard RGB images, eliminating the dependency on specialized imaging equipment.
+The core objective is not just detection, but **probabilistic reconstruction of plausible underlying compositions**, using modern generative AI techniques.
 
-1. Hardware Dependency & Lack of Scalability
-The Challenge: Traditional hidden image detection relies heavily on X-ray and Multispectral imaging. These methods require specialized, high-cost hardware, controlled environments, and expert handling, making them inaccessible to smaller institutions and independent researchers.
+---
 
-The Solution: By utilizing an RGB-based AI Inference Pipeline, my solution democratizes art exploration. It eliminates the need for expensive physical imaging by using deep learning to "infer" underlying layers directly from standard digital photographs.
+## Problem Statement & Proposed Solution
 
-2. Manual Identification of Layered History
-The Challenge: Artworks often contain "overpaintings"—instances where a canvas was reused or controversial details were concealed. Identifying whether a painting is a single layer or a composite of historical modifications currently requires extensive manual cross-referencing and physical testing.
+### 1. Hardware Dependency & Lack of Scalability
 
-The Solution: I propose a Generative Reconstruction Pipeline. Instead of just identifying the existence of a hidden layer, my system uses Semantic Segmentation (Mask2Former) and Inpainting (Stable Diffusion) to actively reconstruct and visualize these obscured sketches and compositions automatically.
+**Challenge:**
+Hidden image detection relies on costly imaging techniques (X-ray, multispectral), limiting accessibility.
 
-3. Data Complexity & Information Extraction
-The Challenge: Extracting actionable insights from a painting—such as pigment degradation, surface damage, or previous restoration "re-touches"—is a labor-intensive task that involves parsing complex raw spectral data.
+**Solution:**
+An **RGB-based AI inference pipeline** that leverages deep learning to infer underlying structures directly from standard images. This removes the need for specialized equipment and enables scalable deployment.
 
-The Solution: My architecture integrates an End-to-End Automated Pipeline. By combining Canny-driven edge detection with ControlNet, the system automates the extraction of structural information and damage patterns, providing historians with immediate, high-fidelity visual data without manual intervention.
+---
 
-The core idea is to leverage recent advancements in **generative AI, diffusion models, and structure-preserving networks** to reconstruct underlying visual information from degraded or modified paintings. Instead of explicitly detecting hidden layers through physical imaging, this system performs **intelligent reconstruction and inference**, enabling a broader and more accessible approach to hidden art exploration.
+### 2. Manual Identification of Layered History
 
-The pipeline operates in multiple stages:
+**Challenge:**
+Identifying overpaintings and layered compositions requires manual inspection and expert analysis.
 
-* **Denoising and Preprocessing** to clean and normalize the input
-* **Damage and Region Detection** using semantic segmentation and edge-based masking
-* **AI Inpainting using Diffusion Models** to reconstruct missing or altered regions
-* **Structure Preservation via ControlNet** to maintain geometric and compositional consistency
-* **Enhancement and Super-Resolution** for high-quality output generation
+**Solution:**
+A **Generative Reconstruction Pipeline** combining:
 
-This approach not only restores damaged artworks but also provides a **probabilistic reconstruction of hidden compositions**, making it a powerful tool for historians, researchers, and digital archivists.
+* Semantic Segmentation (Mask2Former)
+* Diffusion-based Inpainting (Stable Diffusion)
 
+This allows automatic identification and reconstruction of altered regions.
+
+---
+
+### 3. Data Complexity & Information Extraction
+
+**Challenge:**
+Analyzing damage, pigment variation, and restorations from raw data is complex and time-intensive.
+
+**Solution:**
+An **end-to-end automated pipeline** integrating:
+
+* Edge detection (Canny)
+* Structure guidance (ControlNet)
+
+This enables structured extraction and reconstruction without manual intervention.
+
+---
+
+## Proposed Approach
+
+The system leverages **diffusion models, segmentation networks, and structure-preserving conditioning** to reconstruct underlying visual content.
+
+### Pipeline Overview
+
+```
+Input Image (RGB)
+        ↓
+Denoising & Preprocessing
+        ↓
+Segmentation (Mask2Former)
+        ↓
+Mask Generation (Altered Regions)
+        ↓
+Edge Extraction (Canny)
+        ↓
+ControlNet (Structure Conditioning)
+        ↓
+Stable Diffusion (Inpainting)
+        ↓
+Super Resolution (RealESRGAN)
+        ↓
+Final Reconstruction
+```
+
+---
+
+## Training Strategy (Key Innovation)
+
+A major challenge is the lack of ground truth hidden images.
+
+To address this, I propose a **synthetic data generation pipeline**:
+
+* Start with clean paintings
+* Simulate overpainting using:
+
+  * occlusions
+  * texture overlays
+  * noise and degradation
+
+This creates supervised pairs:
+
+| Input (Modified Painting) | Target (Original Painting) |
+| ------------------------- | -------------------------- |
+
+This enables effective training of reconstruction models while maintaining realism.
+
+---
+
+## Evaluation Strategy
+
+Since reconstruction is inherently uncertain, evaluation is performed across multiple dimensions:
+
+### Quantitative Metrics
+
+* **SSIM (Structural Similarity Index)**
+* **PSNR (Peak Signal-to-Noise Ratio)**
+* **LPIPS (Perceptual Similarity)**
+
+### Structural Consistency
+
+* Edge similarity (Canny overlap)
+* Feature similarity using CLIP embeddings
+
+### Retrieval-based Validation
+
+* Compare reconstructed outputs with nearest neighbors in embedding space
+
+### Qualitative Evaluation
+
+* Visual inspection
+* Comparison with known restored artworks
+
+---
+
+## Uncertainty Estimation
+
+The system models reconstruction as a **probabilistic process**:
+
+* Generate multiple reconstructions per image
+* Measure variance across outputs
+* Highlight low-confidence regions
+
+This ensures transparency and avoids overconfident interpretations.
+
+---
 
 ## Why this proposal is an improvement
 
-This proposal enhances the original idea in several key ways:
-
 ### 1. Accessibility and Scalability
 
-Unlike traditional methods that require multispectral or X-ray data, this system works with **standard RGB images**, making it deployable in low-resource environments and scalable across large datasets.
+Works entirely on RGB images → eliminates dependency on specialized hardware.
 
 ### 2. Software-first Approach
 
-By shifting from hardware-dependent imaging to AI-driven reconstruction, the project reduces cost and increases usability. This allows broader adoption across institutions, researchers, and independent analysts.
+Transforms a hardware-intensive problem into a scalable AI solution.
 
 ### 3. End-to-End Automated Pipeline
 
-The proposed system integrates multiple stages—denoising, segmentation, inpainting, enhancement, and upscaling—into a **single cohesive pipeline**, reducing manual intervention.
+Fully integrated pipeline reduces manual effort.
 
-### 4. Generative Reconstruction instead of Detection
+### 4. Generative Reconstruction
 
-Rather than only identifying whether a hidden image exists, this approach attempts to **reconstruct plausible underlying visuals**, providing richer insights.
+Moves beyond detection → reconstructs plausible hidden compositions.
 
 ### 5. Deployment-ready Architecture
 
-The system is designed with **FastAPI and Docker-based deployment**, ensuring reproducibility, scalability, and ease of integration into real-world applications.
+Designed for real-world usage using FastAPI + Docker.
 
+---
 
 ## Duration
 
 Total project length: 175 hours
 
+---
 
 ## Task ideas
 
-* Design and implement a multi-stage AI pipeline for artifact reconstruction
-* Develop segmentation-based masking techniques for identifying altered regions
-* Integrate diffusion-based inpainting for reconstructing missing or hidden content
-* Apply ControlNet for structure preservation during generation
-* Implement enhancement and super-resolution modules
-* Optimize pipeline performance for CPU/GPU environments
+* Design and implement multi-stage reconstruction pipeline
+* Develop segmentation-based masking techniques
+* Train synthetic data generation pipeline
+* Integrate diffusion-based inpainting
+* Apply ControlNet for structure preservation
+* Implement enhancement and super-resolution
+* Optimize for CPU/GPU environments
+* Develop evaluation and uncertainty estimation modules
 
+---
 
 ## Expected results
 
-* A fully functional AI pipeline capable of reconstructing and enhancing damaged paintings
-* A system that can infer and visualize potential hidden compositions
-* Modular architecture enabling future extensions (e.g., multispectral integration)
-* Deployment-ready API for real-world usage
-* Documentation covering architecture, implementation, and optimization
+* Functional AI pipeline for artifact reconstruction
+* Ability to generate plausible hidden compositions
+* Quantitative + qualitative evaluation framework
+* Modular architecture for future extensions
+* Deployment-ready API
 
+---
 
 ## Tech stack
 
 * **Programming Language:** Python
-* **Deep Learning Framework:** PyTorch
+* **Framework:** PyTorch
 * **Computer Vision:** OpenCV, NumPy
-* **Models and Libraries:**
 
-  * Hugging Face Transformers (Mask2Former for segmentation)
-  * Diffusers (Stable Diffusion Inpainting)
-  * ControlNet (structure preservation)
-  * RealESRGAN (super-resolution)
-* **Backend:** FastAPI
-* **Deployment:** Docker
-* **Utilities:** Python-dotenv, Hugging Face Hub
+### Models & Libraries:
 
+* Hugging Face Transformers (**Mask2Former**)
+* Diffusers (**Stable Diffusion Inpainting**)
+* **ControlNet**
+* **RealESRGAN**
+
+### Backend & Deployment:
+
+* FastAPI
+* Docker
+* Hugging Face Hub
+
+---
 
 ## Why my proposal stands out
 
-This proposal stands out due to its **practicality, innovation, and real-world applicability**:
+This proposal distinguishes itself through:
 
-* It transforms a research-heavy concept into a **deployable engineering solution**
-* It removes reliance on costly imaging techniques, making the solution **democratized and scalable**
-* It combines multiple state-of-the-art AI models into a **cohesive, production-ready system**
-* It focuses not just on detection but on **meaningful reconstruction and visualization**
-* It is built with deployment and usability in mind, ensuring impact beyond experimentation
+* **Bridging research and engineering**
+* **Eliminating dependency on expensive imaging hardware**
+* **Introducing synthetic supervision for training**
+* **Combining multiple SOTA models into a unified pipeline**
+* **Providing uncertainty-aware reconstruction**
+* **Focusing on deployability and real-world usability**
 
-Overall, this project bridges the gap between **academic research and practical implementation**, offering a novel approach to exploring hidden art using modern AI techniques.
+Rather than only detecting hidden images, this system provides **interpretable, visual reconstructions**, enabling deeper insights into artistic processes and history.
 
+---
 
 ## Requirements
 
 * Python
 * PyTorch
 * Computer vision fundamentals
-* Basic understanding of deep learning and generative models
+* Understanding of deep learning and generative models
 
+---
 
 ## Project difficulty level
 
 Medium to High
 
+---
 
 ## Mentors
 
