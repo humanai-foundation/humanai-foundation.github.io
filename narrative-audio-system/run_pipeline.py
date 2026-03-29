@@ -5,12 +5,23 @@ import shutil
 import sys
 import json
 from pathlib import Path
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "task1_audio_pipeline"))
+from audio_pipeline import build_feature_dataset
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "task3_transcription"))
+from whisper_transcriber import transcribe_directory, measure_accuracy
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "task4_audio_retrieval"))
+from retrieval_prototype import build_index as build_retrieval_index, search as retrieval_search, print_results as print_retrieval_results
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "task_bonus_storytelling"))
+from storytelling_analysis import analyze_storytelling, discuss_storytelling_signals
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, classification_report, f1_score
+from sklearn.model_selection import train_test_split
 import numpy as np
 
 
@@ -31,45 +42,66 @@ def extract_mfcc_vector(audio_path, sample_rate=16000, n_mfcc=13):
 
 
 class SimpleClassifier(nn.Module):
-    def __init__(self, input_dim, num_classes):
+    def __init__(self, input_dim, hidden_dim, num_classes):
         super().__init__()
-        self.classifier = nn.Linear(input_dim, num_classes)
+        self.net = nn.Sequential(
+            nn.Linear(input_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(hidden_dim, num_classes),
+        )
 
     def forward(self, input_features):
-        return self.classifier(input_features)
+        return self.net(input_features)
 
 
-def train_classifier(features, labels, num_epochs=20):
-    # Map any incoming label values to contiguous class ids required by CrossEntropyLoss.
+def train_classifier(features, labels, num_epochs=30, test_size=0.2, random_seed=42):
     label_array = np.asarray(labels)
     unique_classes, encoded_labels = np.unique(label_array, return_inverse=True)
-    emotion_names = [str(name).strip().title() for name in unique_classes.tolist()]
-    print("Task 2: Emotions:", ", ".join(emotion_names))
+    class_names = [str(n).strip().title() for n in unique_classes.tolist()]
+    print("Task 2: Emotions:", ", ".join(class_names))
 
     feature_array = np.asarray(features, dtype=np.float32)
-    feature_mean = feature_array.mean(axis=0)
-    feature_std = feature_array.std(axis=0) + 1e-6
-    standardized_features = (feature_array - feature_mean) / feature_std
 
-    classifier_model = SimpleClassifier(standardized_features.shape[1], len(unique_classes))
+    X_train, X_test, y_train, y_test = train_test_split(
+        feature_array, encoded_labels, test_size=test_size,
+        random_state=random_seed, stratify=encoded_labels
+    )
+
+    feature_mean = X_train.mean(axis=0)
+    feature_std = X_train.std(axis=0) + 1e-6
+    X_train = (X_train - feature_mean) / feature_std
+    X_test_norm = (X_test - feature_mean) / feature_std
+
+    classifier_model = SimpleClassifier(X_train.shape[1], hidden_dim=64, num_classes=len(unique_classes))
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(classifier_model.parameters(), lr=0.01)
+    optimizer = optim.Adam(classifier_model.parameters(), lr=1e-3)
 
-    feature_tensor = torch.tensor(standardized_features, dtype=torch.float32)
-    label_tensor = torch.tensor(encoded_labels, dtype=torch.long)
+    train_tensor = torch.tensor(X_train, dtype=torch.float32)
+    label_tensor = torch.tensor(y_train, dtype=torch.long)
 
+    classifier_model.train()
     for epoch in range(num_epochs):
-        logits = classifier_model(feature_tensor)
+        logits = classifier_model(train_tensor)
         loss = criterion(logits, label_tensor)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+        if epoch in {0, num_epochs - 1} or (epoch + 1) % 10 == 0:
+            preds = torch.argmax(logits, dim=1).numpy()
+            acc = accuracy_score(y_train, preds)
+            f1 = f1_score(y_train, preds, average="weighted", zero_division=0)
+            print(f"Task 2 - Epoch {epoch + 1:3d}: loss={loss.item():.4f}  train_acc={acc:.3f}  train_f1={f1:.3f}")
 
-        predicted_labels = torch.argmax(logits, dim=1).numpy()
-        accuracy = accuracy_score(encoded_labels, predicted_labels)
-        weighted_f1 = f1_score(encoded_labels, predicted_labels, average="weighted")
-        if epoch in {0, num_epochs - 1} or (epoch + 1) % 5 == 0:
-            print(f"Task 2 - Epoch {epoch + 1}: Loss={loss.item():.4f}, Acc={accuracy:.3f}, F1={weighted_f1:.3f}")
+    # Held-out test evaluation
+    classifier_model.eval()
+    with torch.no_grad():
+        test_preds = torch.argmax(classifier_model(torch.tensor(X_test_norm, dtype=torch.float32)), dim=1).numpy()
+    test_acc = accuracy_score(y_test, test_preds)
+    test_f1 = f1_score(y_test, test_preds, average="weighted", zero_division=0)
+    print(f"Task 2 - Test Accuracy: {test_acc:.3f}  Weighted F1: {test_f1:.3f}")
+    print("Task 2 - Per-class report:")
+    print(classification_report(y_test, test_preds, target_names=class_names, zero_division=0))
 
     return classifier_model, unique_classes, feature_mean, feature_std
 
@@ -126,17 +158,6 @@ def transcribe_audio(input_path, model_size="tiny"):
         return fallback_transcript
 
 
-def retrieve_best_match(candidate_documents, query_text, min_similarity=0.05):
-    # Fit on docs + query so they share one TF-IDF feature space.
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform(candidate_documents + [query_text])
-    similarity_scores = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[:-1])
-    best_match_index = similarity_scores.argmax()
-    best_score = float(similarity_scores[0, best_match_index])
-    if best_score < min_similarity:
-        return None, best_score
-    return candidate_documents[best_match_index], best_score
-
 
 if __name__ == "__main__":
     # Accept one optional argument: audio filename/path to transcribe.
@@ -151,11 +172,33 @@ if __name__ == "__main__":
 
     processed_audio_path = "examples/processed_audio.wav"
 
-    # Task 1: audio preprocessing.
+    # Task 1: full audio processing pipeline (normalize, segment, extract features → CSV).
+    task1_output_csv = Path("examples/task1_features_dataset.csv")
+    task1_normalized_dir = Path("examples/normalized_audio")
+    print("Task 1: running full audio feature extraction pipeline...")
+    build_feature_dataset(
+        input_dir="examples",
+        output_csv=str(task1_output_csv),
+        normalized_dir=str(task1_normalized_dir),
+    )
+
+    # Also write a single processed file for downstream tasks (Tasks 2/3/4).
     process_audio(input_audio_path, processed_audio_path)
 
-    # Task 3: speech-to-text.
-    transcript_text = transcribe_audio(input_audio_path)
+    # Task 3: batch speech-to-text + WER on a small subset.
+    task3_transcript_file = Path("examples/transcripts.txt")
+    print("\nTask 3: transcribing recordings (first 10 files) ...")
+    all_transcripts = transcribe_directory(
+        input_dir="examples",
+        output_txt=str(task3_transcript_file),
+        model_size="tiny",
+        max_files=10,
+    )
+    measure_accuracy(all_transcripts, max_samples=10)
+
+    # Pick transcript for the input file to use in Task 4.
+    input_filename = Path(input_audio_path).name
+    transcript_text = all_transcripts.get(input_filename) or transcribe_audio(input_audio_path)
 
     # Task 2: train on real emotion labels from the JSON mapping.
     label_map_file = Path("examples") / "emotion_labels.json"
@@ -179,16 +222,27 @@ if __name__ == "__main__":
     else:
         print(f"Task 2: label map not found at {label_map_file}, skipping classifier training.")
 
-    # Task 4: retrieval over candidate text snippets.
-    candidate_documents = [
-        transcript_text,
-        f"Detected emotion: {predicted_input_emotion}",
-        "The hero embarks on a journey",
-        "A tragic ending unfolds",
-    ]
-    retrieval_query = "sad story"
-    best_matching_document, similarity_score = retrieve_best_match(candidate_documents, retrieval_query)
-    if best_matching_document is None:
-        print(f"Task 4: No strong match for query (best cosine score={similarity_score:.3f}).")
-    else:
-        print(f"Task 4: Best match for query (score={similarity_score:.3f}): {best_matching_document}")
+    # Task 4: narrative audio retrieval over real recordings.
+    print("\nTask 4: building retrieval index from audio features ...")
+    retrieval_records = build_retrieval_index(
+        features_csv=str(task1_output_csv),
+        emotion_labels_json=str(label_map_file),
+    )
+    print(f"Task 4: index contains {len(retrieval_records)} recordings.")
+    for query in [
+        "calm narration longer than 4 seconds",
+        "high-energy speech",
+        "dramatic dialogue",
+    ]:
+        results = retrieval_search(query, retrieval_records, top_k=3)
+        print_retrieval_results(query, results)
+
+    # Bonus: storytelling-oriented analysis over a subset of recordings.
+    print("\nBonus: storytelling audio analysis on selected recordings ...")
+    bonus_rows = analyze_storytelling(
+        input_dir="examples",
+        output_csv="examples/storytelling_analysis.csv",
+        max_files=8,
+        model_size="tiny",
+    )
+    discuss_storytelling_signals(bonus_rows)

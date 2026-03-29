@@ -1,0 +1,10 @@
+03-01-01-01-01-01-01.wav	Kids are talking by the door.
+03-01-01-01-01-01-04.wav	Kids are talking by the door.
+03-01-01-01-01-01-11.wav	Kids are talking by the door.
+03-01-01-01-01-02-01.wav	Kids are talking by the door.
+03-01-01-01-01-02-04.wav	Kids are talking by the door.
+03-01-01-01-01-02-11.wav	Kids are talking by the door.
+03-01-01-01-02-01-01.wav	Dogs are sitting by the door.
+03-01-01-01-02-01-04.wav	Dogs are sitting by the door.
+03-01-01-01-02-01-11.wav	Dogs are sitting by the door.
+03-01-01-01-02-02-01.wav	Dogs are sitting by the door.

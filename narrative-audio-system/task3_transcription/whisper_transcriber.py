@@ -1,36 +1,219 @@
-import whisper
+"""
+Task 3: AI-Based Transcription using OpenAI Whisper
+=====================================================
+Approach
+--------
+We use OpenAI Whisper (tiny model for speed, base/small for better accuracy)
+to transcribe speech recordings. Whisper is a transformer encoder-decoder model
+pre-trained on 680 000 hours of multilingual audio and requires no fine-tuning.
+
+The RAVDESS dataset used here contains exactly two spoken sentences:
+  01 → "Kids are talking by the door"
+  02 → "Dogs are sitting by the door"
+These known references let us measure Word Error Rate (WER) on every file.
+
+WER = (Substitutions + Deletions + Insertions) / Total reference words
+A WER of 0.0 is perfect; lower is better.
+"""
+
+import argparse
+import shutil
 import sys
 from pathlib import Path
 
-# Allow script-style execution (python task3_transcription/...) to import sibling task modules.
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from task4_audio_retrieval.retrieval_prototype import build_index, search
+import whisper
 
 
-def transcribe_audio(audio_path, model_size="base"):
-    whisper_model = whisper.load_model(model_size)
-    transcription_result = whisper_model.transcribe(audio_path)
-    transcript_text = transcription_result["text"]
-    print("Transcription:", transcript_text)
-    return transcript_text
+# ---------------------------------------------------------------------------
+# RAVDESS ground-truth lookup (filename encodes the statement at position 4)
+# ---------------------------------------------------------------------------
+RAVDESS_STATEMENTS = {
+    "01": "Kids are talking by the door",
+    "02": "Dogs are sitting by the door",
+}
 
 
-def transcribe_and_retrieve(audio_path, candidate_documents):
-    # Task 3 output (transcript) is used directly as the Task 4 query.
-    transcript_text = transcribe_audio(audio_path)
-    corpus_embeddings = build_index(candidate_documents)
-    best_matching_document = search(transcript_text, candidate_documents, corpus_embeddings)
-    print("Retrieved document:", best_matching_document)
-    return transcript_text, best_matching_document
+def _ravdess_reference(filename: str) -> str | None:
+    """Return ground-truth text for a RAVDESS filename, or None if unknown."""
+    parts = Path(filename).stem.split("-")
+    if len(parts) >= 5:
+        return RAVDESS_STATEMENTS.get(parts[4])
+    return None
 
 
+# ---------------------------------------------------------------------------
+# WER (implemented without external deps)
+# ---------------------------------------------------------------------------
+def _edit_distance(ref_tokens: list[str], hyp_tokens: list[str]) -> int:
+    """Standard dynamic-programming edit distance."""
+    n, m = len(ref_tokens), len(hyp_tokens)
+    dp = list(range(m + 1))
+    for i in range(1, n + 1):
+        prev, dp[0] = dp[0], i
+        for j in range(1, m + 1):
+            prev, dp[j] = dp[j], (
+                prev if ref_tokens[i - 1] == hyp_tokens[j - 1]
+                else 1 + min(prev, dp[j], dp[j - 1])
+            )
+    return dp[m]
+
+
+def word_error_rate(reference: str, hypothesis: str) -> float:
+    ref_tokens = reference.lower().split()
+    hyp_tokens = hypothesis.lower().split()
+    if not ref_tokens:
+        return 0.0
+    return _edit_distance(ref_tokens, hyp_tokens) / len(ref_tokens)
+
+
+# ---------------------------------------------------------------------------
+# Core transcription helpers
+# ---------------------------------------------------------------------------
+def load_model(model_size: str = "tiny"):
+    if shutil.which("ffmpeg") is None:
+        print("WARNING: ffmpeg not found — Whisper may fail to decode audio.")
+    return whisper.load_model(model_size)
+
+
+def transcribe_file(model, audio_path: str) -> str:
+    result = model.transcribe(str(audio_path))
+    return result["text"].strip()
+
+
+# ---------------------------------------------------------------------------
+# Batch transcription
+# ---------------------------------------------------------------------------
+def transcribe_directory(
+    input_dir: str,
+    output_txt: str,
+    model_size: str = "tiny",
+    max_files: int | None = None,
+) -> dict[str, str]:
+    """
+    Transcribe all .wav files in input_dir.
+    Writes one line per file to output_txt.
+    Returns {filename: transcript} mapping.
+    """
+    input_path = Path(input_dir)
+    audio_files = sorted(input_path.glob("*.wav"))
+    if max_files:
+        audio_files = audio_files[:max_files]
+
+    if not audio_files:
+        raise ValueError(f"No .wav files found in {input_dir}")
+
+    print(f"\nLoading Whisper '{model_size}' model ...")
+    model = load_model(model_size)
+
+    transcripts: dict[str, str] = {}
+    output_path = Path(output_txt)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with output_path.open("w", encoding="utf-8") as out_fp:
+        for audio_file in audio_files:
+            text = transcribe_file(model, audio_file)
+            transcripts[audio_file.name] = text
+            out_fp.write(f"{audio_file.name}\t{text}\n")
+            print(f"  {audio_file.name}: {text}")
+
+    print(f"\nTranscripts saved to {output_path}  ({len(transcripts)} files)")
+    return transcripts
+
+
+# ---------------------------------------------------------------------------
+# Accuracy measurement
+# ---------------------------------------------------------------------------
+def measure_accuracy(
+    transcripts: dict[str, str],
+    max_samples: int = 20,
+) -> None:
+    """
+    Compute WER on up to max_samples files that have a known ground-truth
+    reference (RAVDESS statement 01 or 02).
+    """
+    wer_scores: list[float] = []
+    evaluated: list[tuple[str, str, str, float]] = []
+
+    for filename, hypothesis in list(transcripts.items())[:max_samples]:
+        reference = _ravdess_reference(filename)
+        if reference is None:
+            continue
+        wer = word_error_rate(reference, hypothesis)
+        wer_scores.append(wer)
+        evaluated.append((filename, reference, hypothesis, wer))
+
+    if not wer_scores:
+        print("\nNo ground-truth references available for accuracy measurement.")
+        return
+
+    avg_wer = sum(wer_scores) / len(wer_scores)
+
+    print(f"\n--- Transcription Accuracy ({len(wer_scores)} samples) ---")
+    for filename, ref, hyp, wer in evaluated:
+        print(f"  File : {filename}")
+        print(f"  Ref  : {ref}")
+        print(f"  Hyp  : {hyp}")
+        print(f"  WER  : {wer:.2%}")
+        print()
+    print(f"  Average WER : {avg_wer:.2%}")
+
+    _discuss_quality(avg_wer, len(wer_scores))
+
+
+def _discuss_quality(avg_wer: float, n_samples: int) -> None:
+    print("\n--- Discussion of Transcription Quality ---")
+    print(
+        f"Whisper (tiny) achieved an average WER of {avg_wer:.1%} on {n_samples} RAVDESS samples."
+    )
+    if avg_wer <= 0.05:
+        print("This is near-perfect transcription — the sentences are short, clear, and in English.")
+    elif avg_wer <= 0.20:
+        print("Good accuracy. Minor errors (dropped/swapped words) occur under emotional prosody.")
+    else:
+        print("Moderate WER, likely caused by strong emotional expressiveness distorting phonemes.")
+    print(
+        "Using the 'base' or 'small' Whisper model instead of 'tiny' would further reduce WER."
+    )
+    print(
+        "For production use, speaker diarisation and language-model rescoring would help further."
+    )
+    print("------------------------------------------\n")
+
+
+# ---------------------------------------------------------------------------
+# Entry point
+# ---------------------------------------------------------------------------
 if __name__ == "__main__":
-    candidate_docs = [
-        "The hero embarks on a journey.",
-        "A tragic ending unfolds.",
-        "Comedic relief scene.",
-    ]
-    transcribe_and_retrieve("examples/sample_audio.wav", candidate_docs)
+    parser = argparse.ArgumentParser(description="Task 3: Whisper batch transcription")
+    parser.add_argument("--input-dir", default="../examples", help="Directory of .wav files")
+    parser.add_argument(
+        "--output-txt",
+        default="../examples/transcripts.txt",
+        help="Output file for transcripts (TSV: filename<TAB>transcript)",
+    )
+    parser.add_argument(
+        "--model-size",
+        default="tiny",
+        choices=["tiny", "base", "small", "medium", "large"],
+    )
+    parser.add_argument("--max-files", type=int, default=None, help="Limit files for quick runs")
+    parser.add_argument(
+        "--accuracy-samples",
+        type=int,
+        default=20,
+        help="Number of files to use for WER evaluation",
+    )
+    args = parser.parse_args()
+
+    script_dir = Path(__file__).resolve().parent
+    input_dir = (script_dir / args.input_dir).resolve()
+    output_txt = (script_dir / args.output_txt).resolve()
+
+    transcripts = transcribe_directory(
+        input_dir=str(input_dir),
+        output_txt=str(output_txt),
+        model_size=args.model_size,
+        max_files=args.max_files,
+    )
+
+    measure_accuracy(transcripts, max_samples=args.accuracy_samples)
