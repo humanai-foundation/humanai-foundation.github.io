@@ -8,3 +8,6 @@ description: |
 ---
 
 {% include gsoc_project.ext %}
+### System Architecture
+
+The AutoEIT system can follow a pipeline where learner audio recordings are first preprocessed to remove noise and segment the speech. The processed audio is then passed through a speech-to-text model to generate a transcription. The transcription can later be evaluated using similarity metrics to assess the learner’s response accuracy.
