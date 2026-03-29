@@ -1,25 +1,51 @@
-# Narrative Audio System
+# TableTalk Narrative Audio System
 
-This project is a GSoC 2026 test submission for a narrative-audio pipeline. It implements four required tasks and one bonus analysis task:
+This repository contains the Technical Evaluation Test for the **GSoC 2026 HumanAI: TableTalk** project. It implements an end-to-end pipeline for processing, classifying, and retrieving narrative audio for interactive storytelling.
 
-1. Audio processing and feature extraction
-2. Narrative tone classification
-3. AI-based transcription
-4. Narrative audio retrieval
-5. Bonus: storytelling audio analysis
+## 📄 Final Submission Documents
+* **[Technical Report (PDF)](./TableTalk%20Narrative%20Audio%20System_%20Technical%20Report.pdf)** - Detailed analysis of methodology, results, and storytelling heuristics.
+* **[Implementation Roadmap](./TableTalk%20Narrative%20Audio%20System_%20Technical%20Report.pdf#page=4)** - 12-week GSoC project plan.
 
-The system takes a collection of speech recordings, converts them into structured features, classifies emotional or narrative tone, transcribes speech with Whisper, retrieves recordings from natural-language queries, and analyzes storytelling-oriented prosodic signals.
+---
+
+## 🌟 Key Results
+* **Task 3 (Transcription):** Achieved an average **Word Error Rate (WER) of 16.67%** using OpenAI Whisper.
+* **Task 2 (Classification):** Successfully trained a neural model to **38.6% accuracy** on the RAVDESS subset, identifying key markers for "Calm" vs. "Fearful" tones.
+* **Bonus Task:** Developed a storytelling detection heuristic using **Mean Pitch Variation (123.01 Hz)** and **Pause Ratios (0.952)**.
+
+---
+
+## 🛠️ Setup & Installation
+
+### 1. System Requirements
+This project requires **FFmpeg** for audio processing.
+* **macOS:** `brew install ffmpeg`
+* **Ubuntu/Linux:** `sudo apt install ffmpeg`
+* **Windows:** Install via [ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
+
+### 2. Python Environment
+```bash
+# Clone the repository
+git clone [YOUR_REPO_URL]
+cd [REPO_NAME]
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+---
 
 ## Project Structure
 
-- `run_pipeline.py`: end-to-end demo pipeline for all tasks
+- `run_pipeline.py`: End-to-end pipeline for all required tasks and bonus analysis
 - `task1_audio_pipeline/audio_pipeline.py`: Task 1 audio preprocessing and feature extraction
-- `task2_tone_classification/train_classifier.py`: Task 2 narrative tone classification
-- `task3_transcription/whisper_transcriber.py`: Task 3 batch transcription and WER evaluation
-- `task4_audio_retrieval/retrieval_prototype.py`: Task 4 hybrid retrieval prototype
-- `task_bonus_storytelling/storytelling_analysis.py`: bonus storytelling-style analysis
-- `examples/`: input audio, labels, and generated outputs
-- `TableTalk Narrative Audio System_ Technical Report.pdf`: technical report for the submission
+- `task2_tone_classification/train_classifier.py`: Task 2 tone classification model training and evaluation
+- `task3_transcription/whisper_transcriber.py`: Task 3 batch transcription and WER measurement
+- `task4_audio_retrieval/retrieval_prototype.py`: Task 4 retrieval prototype (filtering + semantic ranking)
+- `task_bonus_storytelling/storytelling_analysis.py`: Bonus storytelling feature analysis and scoring
+- `examples/`: Input recordings, labels, and generated output artifacts
+
+---
 
 ## Task Summary
 
@@ -27,50 +53,57 @@ The system takes a collection of speech recordings, converts them into structure
 
 The Task 1 pipeline:
 
-1. Loads `.wav` files from a directory
-2. Normalizes audio amplitude
-3. Segments audio into fixed-duration chunks when needed
-4. Extracts machine-learning-ready audio features
+1. Loads `.wav` files from the input directory
+2. Normalizes audio amplitude for consistent feature extraction
+3. Segments audio into fixed windows when needed
+4. Extracts machine-learning-ready features
 
 Extracted features include:
 
 1. MFCC coefficients
-2. Pitch
+2. Pitch (fundamental frequency summary)
 3. Spectral centroid
 4. RMS energy
 5. Duration
 
-Output:
+Primary outputs:
 
 - `examples/task1_features_dataset.csv`
 - `examples/normalized_audio/`
 
 ### Task 2: Narrative Tone Classification
 
-The classifier uses MFCC-based features and a lightweight feedforward neural network to predict emotional tone labels. The training script performs a stratified train/test split, standardizes features using train-set statistics, and reports:
+The classifier uses MFCC-based features and a feedforward neural network to predict emotional tone labels. The training pipeline includes:
 
-1. Test accuracy
+1. Stratified train/test split
+2. Feature standardization using train-set statistics
+3. Neural model training with cross-entropy loss
+4. Test evaluation
+
+Reported metrics:
+
+1. Accuracy
 2. Weighted F1 score
-3. Per-class classification report
+3. Per-class report
 
 ### Task 3: AI-Based Transcription
 
 The transcription module uses OpenAI Whisper to:
 
-1. Transcribe multiple audio recordings
-2. Save transcripts in text format
-3. Measure transcription quality with Word Error Rate on a small subset
+1. Transcribe multiple recordings in batch
+2. Save transcripts to a text output file
+3. Measure transcription quality with Word Error Rate (WER) on a subset
 
-Output:
+Primary output:
 
 - `examples/transcripts.txt`
 
-### Task 4: Narrative Audio Retrieval
+### Task 4: Narrative Audio Retrieval (TableTalk Simulation)
 
-The retrieval system uses a hybrid approach:
+The retrieval system uses a hybrid strategy:
 
-1. Structured filtering for constraints such as duration, energy, pitch, and emotion
-2. Semantic ranking over natural-language descriptions of recordings
+1. Structured filtering from query constraints (duration, energy, pitch, tone)
+2. Semantic ranking over generated recording descriptions
 
 Example queries:
 
@@ -80,38 +113,32 @@ Example queries:
 
 ### Bonus: Storytelling Audio Analysis
 
-The bonus script analyzes several recordings using storytelling-oriented features:
+The bonus module analyzes several recordings for storytelling-related cues:
 
 1. Pacing and pauses
 2. Pitch variation
 3. Energy dynamics
-4. Sentence length from transcripts
+4. Sentence-length characteristics from transcripts
 
 It also computes a heuristic `storytelling_score` and ranks clips by storytelling-like expressiveness.
 
-Output:
+Primary output:
 
 - `examples/storytelling_analysis.csv`
 
-## Installation
-
-From the `narrative-audio-system/` directory:
-
-```bash
-pip install -r requirements.txt
-```
+---
 
 ## Run Instructions
 
 ### Run the full pipeline
 
-From `narrative-audio-system/`:
+From the `narrative-audio-system/` directory:
 
 ```bash
-python run_pipeline.py
+python run_pipeline.py examples/03-01-04-02-01-01-11.wav
 ```
 
-### Run each task individually
+### Run tasks individually
 
 Task 1:
 
@@ -143,30 +170,34 @@ Bonus task:
 python task_bonus_storytelling/storytelling_analysis.py
 ```
 
+---
+
 ## Example Outputs
 
-Generated artifacts from the system include:
+Generated artifacts include:
 
 1. `examples/task1_features_dataset.csv`
 2. `examples/normalized_audio/`
 3. `examples/transcripts.txt`
 4. `examples/storytelling_analysis.csv`
 
-The console output also includes:
+Console outputs include:
 
-1. Task 2 evaluation metrics
-2. Task 3 WER results
+1. Task 2 test metrics (accuracy, weighted F1, class report)
+2. Task 3 WER summary
 3. Task 4 retrieval results for sample queries
 4. Bonus storytelling summary and top-ranked clips
 
+---
+
 ## Approach and Discussion
 
-This project was designed as a compact but complete prototype. The focus was on building an interpretable end-to-end system rather than optimizing each component independently.
+This project is designed as a practical, reproducible end-to-end prototype for narrative audio processing.
 
-- Task 1 converts raw audio into structured numerical features suitable for downstream modeling.
-- Task 2 demonstrates that emotional or narrative tone can be predicted from MFCC-based features using a simple neural model.
-- Task 3 shows that Whisper can provide practical batch transcription with measurable quality.
-- Task 4 combines explicit metadata filters with semantic search to simulate narrative-oriented retrieval.
-- The bonus task explores whether prosodic signals such as pauses, pitch variation, and energy range can help distinguish storytelling narration from ordinary conversational speech.
+- Task 1 converts raw recordings into structured numerical features.
+- Task 2 demonstrates tone classification from audio-derived features.
+- Task 3 provides scalable transcription with measurable quality.
+- Task 4 combines explicit filtering with semantic retrieval for narrative-style queries.
+- The bonus task explores prosodic and transcript-level cues for distinguishing storytelling narration from conversational speech.
 
-Current limitations include small dataset size, CPU transcription speed, and the heuristic nature of the bonus storytelling score. Future improvements could include pretrained audio embeddings, stronger retrieval models, and dedicated storytelling annotations.
+Current limitations include dataset scale, CPU transcription speed, and the heuristic nature of storytelling scoring. Future improvements include pretrained audio embeddings, stronger ranking objectives, and dedicated storytelling annotations.
