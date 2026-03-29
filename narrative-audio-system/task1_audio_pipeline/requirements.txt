@@ -1,0 +1,3 @@
+librosa==0.10.1
+numpy==1.26.4
+soundfile==0.12.1
