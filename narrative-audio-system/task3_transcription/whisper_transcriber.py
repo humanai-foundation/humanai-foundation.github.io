@@ -1,32 +1,12 @@
-"""
-Task 3: AI-Based Transcription using OpenAI Whisper
-=====================================================
-Approach
---------
-We use OpenAI Whisper (tiny model for speed, base/small for better accuracy)
-to transcribe speech recordings. Whisper is a transformer encoder-decoder model
-pre-trained on 680 000 hours of multilingual audio and requires no fine-tuning.
-
-The RAVDESS dataset used here contains exactly two spoken sentences:
-  01 → "Kids are talking by the door"
-  02 → "Dogs are sitting by the door"
-These known references let us measure Word Error Rate (WER) on every file.
-
-WER = (Substitutions + Deletions + Insertions) / Total reference words
-A WER of 0.0 is perfect; lower is better.
-"""
+"""Task 3: batch Whisper transcription with simple WER evaluation."""
 
 import argparse
 import shutil
-import sys
 from pathlib import Path
 
 import whisper
 
 
-# ---------------------------------------------------------------------------
-# RAVDESS ground-truth lookup (filename encodes the statement at position 4)
-# ---------------------------------------------------------------------------
 RAVDESS_STATEMENTS = {
     "01": "Kids are talking by the door",
     "02": "Dogs are sitting by the door",
@@ -41,9 +21,6 @@ def _ravdess_reference(filename: str) -> str | None:
     return None
 
 
-# ---------------------------------------------------------------------------
-# WER (implemented without external deps)
-# ---------------------------------------------------------------------------
 def _edit_distance(ref_tokens: list[str], hyp_tokens: list[str]) -> int:
     """Standard dynamic-programming edit distance."""
     n, m = len(ref_tokens), len(hyp_tokens)
@@ -66,9 +43,6 @@ def word_error_rate(reference: str, hypothesis: str) -> float:
     return _edit_distance(ref_tokens, hyp_tokens) / len(ref_tokens)
 
 
-# ---------------------------------------------------------------------------
-# Core transcription helpers
-# ---------------------------------------------------------------------------
 def load_model(model_size: str = "tiny"):
     if shutil.which("ffmpeg") is None:
         print("WARNING: ffmpeg not found — Whisper may fail to decode audio.")
@@ -80,20 +54,13 @@ def transcribe_file(model, audio_path: str) -> str:
     return result["text"].strip()
 
 
-# ---------------------------------------------------------------------------
-# Batch transcription
-# ---------------------------------------------------------------------------
 def transcribe_directory(
     input_dir: str,
     output_txt: str,
     model_size: str = "tiny",
     max_files: int | None = None,
 ) -> dict[str, str]:
-    """
-    Transcribe all .wav files in input_dir.
-    Writes one line per file to output_txt.
-    Returns {filename: transcript} mapping.
-    """
+    """Transcribe `.wav` files and write `filename<TAB>transcript` lines."""
     input_path = Path(input_dir)
     audio_files = sorted(input_path.glob("*.wav"))
     if max_files:
@@ -120,17 +87,11 @@ def transcribe_directory(
     return transcripts
 
 
-# ---------------------------------------------------------------------------
-# Accuracy measurement
-# ---------------------------------------------------------------------------
 def measure_accuracy(
     transcripts: dict[str, str],
     max_samples: int = 20,
 ) -> None:
-    """
-    Compute WER on up to max_samples files that have a known ground-truth
-    reference (RAVDESS statement 01 or 02).
-    """
+    """Compute WER on up to `max_samples` files with known references."""
     wer_scores: list[float] = []
     evaluated: list[tuple[str, str, str, float]] = []
 
@@ -180,9 +141,6 @@ def _discuss_quality(avg_wer: float, n_samples: int) -> None:
     print("------------------------------------------\n")
 
 
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Task 3: Whisper batch transcription")
     parser.add_argument("--input-dir", default="../examples", help="Directory of .wav files")

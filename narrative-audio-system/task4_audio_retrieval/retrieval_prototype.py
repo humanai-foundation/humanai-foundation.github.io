@@ -1,35 +1,4 @@
-"""
-Task 4: Narrative Audio Retrieval (TableTalk Simulation)
-=========================================================
-Retrieval Method
-----------------
-We build a searchable index over the audio recordings using two complementary
-strategies:
-
-1. **Structured filtering** -- numeric/categorical constraints extracted from
-   natural language queries:
-   - duration  : "longer than 4 seconds", "shorter than 3s"
-   - energy    : "high-energy", "quiet", "low-energy"
-   - emotion   : "calm", "angry", "sad", "happy", etc.
-   - pitch     : "high pitch", "low pitch"
-
-2. **Semantic ranking** -- each recording gets an auto-generated prose
-   description (e.g. "Calm speech, 5.1 s duration, high energy, pitch 145 Hz").
-   Descriptions and the query are embedded with a MiniLM sentence-transformer
-   and ranked by cosine similarity. This catches free-form queries like
-   "dramatic dialogue" that do not map to an exact numeric filter.
-
-The two stages compose: structured filters narrow the candidate set, then
-semantic ranking orders the survivors. If no structured filter matches the
-query the full corpus is ranked semantically.
-
-Example queries (run standalone to see live results):
-  "calm narration longer than 4 seconds"
-  "high-energy speech"
-  "dramatic dialogue"
-  "sad quiet voice"
-  "angry short clip"
-"""
+"""Task 4: filter + semantic ranking retrieval for narrative audio queries."""
 
 import argparse
 import csv
@@ -48,9 +17,6 @@ except ImportError:
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# ---------------------------------------------------------------------------
-# Narrative tone vocabulary
-# ---------------------------------------------------------------------------
 EMOTION_TO_NARRATIVE = {
     "Calm":      "calm narration",
     "Happy":     "upbeat cheerful dialogue",
@@ -66,9 +32,6 @@ ENERGY_THRESHOLDS = {"low": 0.02, "high": 0.06}
 PITCH_THRESHOLDS  = {"low": 120.0, "high": 200.0}
 
 
-# ---------------------------------------------------------------------------
-# Build index from Task 1 CSV + emotion labels
-# ---------------------------------------------------------------------------
 def build_index(features_csv, emotion_labels_json=None):
     features_csv_path = Path(features_csv)
     if not features_csv_path.is_file():
@@ -127,9 +90,6 @@ def build_index(features_csv, emotion_labels_json=None):
     return records
 
 
-# ---------------------------------------------------------------------------
-# Structured filter parser
-# ---------------------------------------------------------------------------
 def _apply_filters(records, query):
     q = query.lower()
     filtered = list(records)
@@ -144,7 +104,7 @@ def _apply_filters(records, query):
 
     if re.search(r"\bhigh[- ]energy\b|\benerget\w+\b|\bloud\b", q):
         filtered = [r for r in filtered if r["energy_label"] == "high"]
-    elif re.search(r"\bquiet\b|\blow[- ]energy\b|\bsoft\b|\bsubdued\b", q):
+    elif re.search(r"\bquiet\b|(?:^|\W)low[- ]energy\b|\bsoft\b|\bsubdued\b", q):
         filtered = [r for r in filtered if r["energy_label"] == "low"]
 
     for emotion_key in EMOTION_TO_NARRATIVE:
@@ -154,15 +114,12 @@ def _apply_filters(records, query):
 
     if re.search(r"\bhigh\s+pitch\b|\bhigh-pitched\b", q):
         filtered = [r for r in filtered if r["pitch_label"] == "high"]
-    elif re.search(r"\blow\s+pitch\b|\blow-pitched\b|\bdeep\b", q):
+    elif re.search(r"(?:^|\W)low\s+pitch\b|low-pitched\b|\bdeep\b", q):
         filtered = [r for r in filtered if r["pitch_label"] == "low"]
 
     return filtered
 
 
-# ---------------------------------------------------------------------------
-# Semantic ranking
-# ---------------------------------------------------------------------------
 def _rank_semantically(query, candidates, top_k):
     if not candidates:
         return []
@@ -183,9 +140,6 @@ def _rank_semantically(query, candidates, top_k):
     return [{"score": round(s, 3), **r} for s, r in ranked[:top_k]]
 
 
-# ---------------------------------------------------------------------------
-# Public search function
-# ---------------------------------------------------------------------------
 def search(query, records, top_k=5):
     """Filter by structured constraints, then rank survivors semantically."""
     candidates = _apply_filters(records, query)
@@ -194,9 +148,6 @@ def search(query, records, top_k=5):
     return _rank_semantically(query, candidates, top_k=top_k)
 
 
-# ---------------------------------------------------------------------------
-# Pretty printer
-# ---------------------------------------------------------------------------
 def print_results(query, results):
     print(f'\nQuery : "{query}"')
     if not results:
@@ -207,9 +158,6 @@ def print_results(query, results):
         print(f"  {i}. {r['filename']}{score_str}\n     {r['description']}")
 
 
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Task 4: Narrative Audio Retrieval")
     parser.add_argument("--features-csv",   default="../examples/task1_features_dataset.csv")

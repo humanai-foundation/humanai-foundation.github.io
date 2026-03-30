@@ -1,6 +1,5 @@
 import argparse
 import json
-import sys
 from pathlib import Path
 
 import librosa
@@ -10,21 +9,6 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 from sklearn.metrics import accuracy_score, classification_report, f1_score
 from sklearn.model_selection import train_test_split
-
-
-# ---------------------------------------------------------------------------
-# Approach
-# ---------------------------------------------------------------------------
-# We classify narrative emotional tone using a two-layer neural network.
-# Input features are 13 MFCC coefficients averaged over time (mean-pooled),
-# giving a compact 13-dimensional representation of each recording.
-# The RAVDESS dataset provides 8 emotion labels (Angry, Calm, Disgust,
-# Fearful, Happy, Neutral, Sad, Surprised), which map directly to the
-# narrative tones the task describes (e.g. Calm → calm description,
-# Fearful → suspense, Angry → urgency, Happy/Sad → dramatic emphasis).
-# Features are z-score standardised before training to help the network
-# converge on this small dataset.
-# ---------------------------------------------------------------------------
 
 
 class ToneClassifier(nn.Module):
@@ -112,10 +96,11 @@ def discuss_results(acc, f1, class_names, y_test, preds):
     else:
         print("Performance is modest, likely due to the small dataset size (~127 samples).")
         print("Pretrained audio embeddings (e.g. wav2vec2) would be a stronger baseline.")
-    confused_pairs = []
-    for true_idx, pred_idx in zip(y_test, preds):
-        if true_idx != pred_idx:
-            confused_pairs.append((class_names[true_idx], class_names[pred_idx]))
+    confused_pairs = [
+        (class_names[true_idx], class_names[pred_idx])
+        for true_idx, pred_idx in zip(y_test, preds)
+        if true_idx != pred_idx
+    ]
     if confused_pairs:
         from collections import Counter
         top = Counter(confused_pairs).most_common(3)

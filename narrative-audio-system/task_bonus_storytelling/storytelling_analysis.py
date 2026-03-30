@@ -7,7 +7,6 @@ from pathlib import Path
 import librosa
 import numpy as np
 
-# Reuse Task 3 Whisper helpers.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -37,8 +36,6 @@ def add_storytelling_scores(rows):
     sentence_len = _min_max_normalize([float(r["avg_sentence_words"]) for r in rows])
 
     for idx, row in enumerate(rows):
-        # Heuristic: storytelling tends to have richer pitch/energy dynamics,
-        # purposeful pauses, and somewhat longer phrasing.
         score_0_1 = (
             0.35 * pitch_var[idx]
             + 0.30 * energy_dyn[idx]
@@ -54,24 +51,20 @@ def extract_storytelling_features(audio_path, sample_rate=16000):
     """Compute pacing/pauses, pitch variation, and energy dynamics for one file."""
     waveform, sr = librosa.load(str(audio_path), sr=sample_rate)
 
-    # Duration and pacing proxy.
     duration_seconds = len(waveform) / float(sr)
     tempo_bpm = float(librosa.feature.tempo(y=waveform, sr=sr)[0])
 
-    # Pause dynamics from low-energy frames.
     rms = librosa.feature.rms(y=waveform, frame_length=1024, hop_length=256)[0]
     silence_threshold = max(0.01, float(np.percentile(rms, 20)))
     silence_mask = rms < silence_threshold
     silence_ratio = float(np.mean(silence_mask)) if len(silence_mask) else 0.0
     pause_events = int(np.sum((~silence_mask[:-1]) & (silence_mask[1:]))) if len(silence_mask) > 1 else 0
 
-    # Pitch variation from voiced F0 values.
     f0 = librosa.yin(waveform, fmin=50, fmax=400, sr=sr)
     voiced_f0 = f0[np.isfinite(f0)]
     pitch_mean_hz = float(np.mean(voiced_f0)) if voiced_f0.size else 0.0
     pitch_std_hz = float(np.std(voiced_f0)) if voiced_f0.size else 0.0
 
-    # Energy dynamics.
     energy_mean = float(np.mean(rms)) if len(rms) else 0.0
     energy_std = float(np.std(rms)) if len(rms) else 0.0
     energy_dynamic_range = float(np.percentile(rms, 90) - np.percentile(rms, 10)) if len(rms) else 0.0

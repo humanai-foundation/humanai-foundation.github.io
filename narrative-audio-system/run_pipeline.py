@@ -6,16 +6,25 @@ import sys
 import json
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "task1_audio_pipeline"))
+PROJECT_ROOT = Path(__file__).resolve().parent
+
+
+def _add_module_path(folder_name):
+    module_path = str(PROJECT_ROOT / folder_name)
+    if module_path not in sys.path:
+        sys.path.insert(0, module_path)
+
+
+_add_module_path("task1_audio_pipeline")
 from audio_pipeline import build_feature_dataset
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "task3_transcription"))
+_add_module_path("task3_transcription")
 from whisper_transcriber import transcribe_directory, measure_accuracy
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "task4_audio_retrieval"))
+_add_module_path("task4_audio_retrieval")
 from retrieval_prototype import build_index as build_retrieval_index, search as retrieval_search, print_results as print_retrieval_results
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "task_bonus_storytelling"))
+_add_module_path("task_bonus_storytelling")
 from storytelling_analysis import analyze_storytelling, discuss_storytelling_signals
 import torch
 import torch.nn as nn
@@ -26,7 +35,6 @@ import numpy as np
 
 
 def process_audio(input_path, output_path, sample_rate=16000, n_mfcc=13):
-    # Keep audio at a fixed sample rate for reproducible feature extraction.
     waveform, loaded_sample_rate = librosa.load(input_path, sr=sample_rate)
     mfcc_features = librosa.feature.mfcc(y=waveform, sr=loaded_sample_rate, n_mfcc=n_mfcc)
     print("Task 1: MFCC feature shape:", mfcc_features.shape)
@@ -37,7 +45,6 @@ def process_audio(input_path, output_path, sample_rate=16000, n_mfcc=13):
 def extract_mfcc_vector(audio_path, sample_rate=16000, n_mfcc=13):
     waveform, loaded_sample_rate = librosa.load(str(audio_path), sr=sample_rate)
     mfcc_matrix = librosa.feature.mfcc(y=waveform, sr=loaded_sample_rate, n_mfcc=n_mfcc)
-    # Convert variable-length MFCC sequence to fixed-size vector.
     return mfcc_matrix.mean(axis=1)
 
 
@@ -116,7 +123,6 @@ def predict_emotion(model, class_names, feature_mean, feature_std, mfcc_vector):
 
 
 def load_labeled_mfcc_features(label_map_path, sample_rate=16000, n_mfcc=13):
-    # utf-8-sig transparently handles files saved with a UTF-8 BOM.
     with Path(label_map_path).open("r", encoding="utf-8-sig") as fp:
         filename_to_emotion = json.load(fp)
 
@@ -140,7 +146,6 @@ def load_labeled_mfcc_features(label_map_path, sample_rate=16000, n_mfcc=13):
 
 
 def transcribe_audio(input_path, model_size="tiny"):
-    # Whisper depends on ffmpeg for audio decoding; keep pipeline runnable with fallback text.
     if shutil.which("ffmpeg") is None:
         fallback_transcript = "Transcription unavailable because ffmpeg is not installed."
         print("Task 3: Transcription (fallback):", fallback_transcript)
@@ -160,11 +165,9 @@ def transcribe_audio(input_path, model_size="tiny"):
 
 
 if __name__ == "__main__":
-    # Accept one optional argument: audio filename/path to transcribe.
     input_audio_path = "examples/sample_audio.wav"
     if len(sys.argv) == 2:
         arg_path = Path(sys.argv[1])
-        # If only a filename is provided, resolve it under examples/.
         if arg_path.parent == Path("."):
             input_audio_path = str(Path("examples") / arg_path.name)
         else:
@@ -172,7 +175,6 @@ if __name__ == "__main__":
 
     processed_audio_path = "examples/processed_audio.wav"
 
-    # Task 1: full audio processing pipeline (normalize, segment, extract features → CSV).
     task1_output_csv = Path("examples/task1_features_dataset.csv")
     task1_normalized_dir = Path("examples/normalized_audio")
     print("Task 1: running full audio feature extraction pipeline...")
@@ -182,10 +184,8 @@ if __name__ == "__main__":
         normalized_dir=str(task1_normalized_dir),
     )
 
-    # Also write a single processed file for downstream tasks (Tasks 2/3/4).
     process_audio(input_audio_path, processed_audio_path)
 
-    # Task 3: batch speech-to-text + WER on a small subset.
     task3_transcript_file = Path("examples/transcripts.txt")
     print("\nTask 3: transcribing recordings (first 10 files) ...")
     all_transcripts = transcribe_directory(
@@ -196,11 +196,9 @@ if __name__ == "__main__":
     )
     measure_accuracy(all_transcripts, max_samples=10)
 
-    # Pick transcript for the input file to use in Task 4.
     input_filename = Path(input_audio_path).name
     transcript_text = all_transcripts.get(input_filename) or transcribe_audio(input_audio_path)
 
-    # Task 2: train on real emotion labels from the JSON mapping.
     label_map_file = Path("examples") / "emotion_labels.json"
     predicted_input_emotion = "Unknown"
     if label_map_file.is_file():
@@ -222,7 +220,6 @@ if __name__ == "__main__":
     else:
         print(f"Task 2: label map not found at {label_map_file}, skipping classifier training.")
 
-    # Task 4: narrative audio retrieval over real recordings.
     print("\nTask 4: building retrieval index from audio features ...")
     retrieval_records = build_retrieval_index(
         features_csv=str(task1_output_csv),
@@ -237,7 +234,6 @@ if __name__ == "__main__":
         results = retrieval_search(query, retrieval_records, top_k=3)
         print_retrieval_results(query, results)
 
-    # Bonus: storytelling-oriented analysis over a subset of recordings.
     print("\nBonus: storytelling audio analysis on selected recordings ...")
     bonus_rows = analyze_storytelling(
         input_dir="examples",
