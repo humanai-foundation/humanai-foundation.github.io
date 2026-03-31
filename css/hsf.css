@@ -34,6 +34,113 @@
     --color-muted:   #94a3b8;
     --color-nav-bg:  #020617;
   }
+
+  body {
+    background-color: var(--color-bg);
+  }
+
+  .navbar {
+    background-color: var(--color-nav-bg) !important;
+    border-color: var(--color-border);
+  }
+
+  .navbar-default .navbar-nav > li > a {
+    color: var(--color-text);
+  }
+
+  .blog-main {
+    background-color: var(--color-bg);
+  }
+
+  .alert-warning {
+    background-color: #451a03;
+    border-color: #78350f;
+    color: #fef3c7;
+  }
+
+  .alert-info {
+    background-color: #1e3a5f;
+    border-color: #1e40af;
+    color: #dbeafe;
+  }
+
+  .jumbotron {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+
+  hr {
+    border-color: var(--color-border);
+  }
+
+  .lead {
+    color: var(--color-text);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+  }
+
+  .panel {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .panel-heading {
+    background-color: var(--color-nav-bg);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .panel-body {
+    color: var(--color-text);
+  }
+
+  .list-group-item {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  .well {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  pre {
+    background-color: #1e1e1e;
+    border-color: var(--color-border);
+    color: #d4d4d4;
+  }
+
+  code {
+    background-color: var(--color-surface);
+    color: #e0e7ff;
+  }
+
+  blockquote {
+    border-left-color: var(--color-primary);
+    color: var(--color-muted);
+  }
+
+  .dropdown-menu {
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  .dropdown-menu > li > a {
+    color: var(--color-text);
+  }
+
+  .dropdown-menu > li > a:hover,
+  .dropdown-menu > li > a:focus {
+    background-color: rgba(255,255,255,0.1);
+    color: #e0e7ff;
+  }
+
+  .tag { background: #312e81; color: #e0e7ff; }
+  .tag-difficulty { background: #78350f; color: #fef3c7; }
 }
 
 body {
