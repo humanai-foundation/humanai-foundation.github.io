@@ -1,27 +1,35 @@
-
 <div class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand">HumanAI</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="/index.html" id="activities_menu">Activities<span class="caret"></span></a>
-                <ul class="dropdown-menu" aria-labelledby="activities_menu">
-                 {% for activity in site.activities %}
-                   <li><a href="{{ activity.url }}">{{ activity.title }}</a></li>
-                 {% endfor %}
-               </ul>
-            </li>
-          </ul>
-
-
-        </div>
-      </div>
+  <div class="container">
+    <div class="navbar-header">
+      <a href="/" class="navbar-brand">HumanAI</a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
     </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        
+        <!-- GSoC Menu -->
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="gsoc_menu" aria-haspopup="true" aria-expanded="false">
+            GSoC <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="gsoc_menu">
+            <li><a href="/activities/gsoc2026.html">Google Summer of Code 2026</a></li>
+            <li><a href="/gsoc/2026/summary.html">All 2026 Proposals</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/activities/gsoc2025.html">GSoC 2025</a></li>
+            <li><a href="/activities/gsoc2024.html">GSoC 2024</a></li>
+          </ul>
+        </li>
+
+        <!-- Quick Links -->
+        <li><a href="/get_involved.html">Get Involved</a></li>
+        <li><a href="/activities/studentblogs.html">Student Blogs</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
