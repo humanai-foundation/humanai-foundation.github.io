@@ -21,6 +21,7 @@ grouping by organization and is case insensitive.
 
 ## Project List
 
+<div class="proposal-grid">
 {% for proposal in site.gsocproposals %}
 {% assign url_tokens = proposal.url | split: '/' %}
 {% assign year_position = url_tokens.size | minus: 2 %}
@@ -30,9 +31,26 @@ grouping by organization and is case insensitive.
 {% capture u_proposal_org %}{{ organization | upcase }}{% endcapture %}
 {% capture u_org %}{{ page.organization | upcase }}{% endcapture %}
 {% if u_proposal_org == u_org %}
-* [ {{ proposal.title }} ]( {{ proposal.url }} )
+  <div class="proposal-card">
+    <h4><a href="{{ proposal.url }}">{{ proposal.title }}</a></h4>
+    <div class="card-meta">
+      {% if proposal.difficulty %}
+        <span class="tag tag-difficulty">{{ proposal.difficulty }}</span>
+      {% endif %}
+      {% for req in proposal.requirements limit:5 %}
+        <span class="tag">{{ req }}</span>
+      {% endfor %}
+      {% for tag in proposal.tags limit:5 %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% if proposal.duration %}
+      <p class="card-duration">⏱ {{ proposal.duration }}</p>
+    {% endif %}
+  </div>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
+</div>
 

@@ -26,6 +26,7 @@ Use the project name as the page title if none has been specified (they are typi
 
 ## Project Proposals
 
+<div class="proposal-grid">
 {% for proposal in site.gsocproposals %}
 {% assign url_tokens = proposal.url | split: '/' %}
 {% assign year_position = url_tokens.size | minus: 2 %}
@@ -35,9 +36,26 @@ Use the project name as the page title if none has been specified (they are typi
 {% capture u_proposal_project %}{{ project | upcase }}{% endcapture %}
 {% capture u_project %}{{ page.project | upcase }}{% endcapture %}
 {% if u_proposal_project == u_project %}
-* [ {{ proposal.title }} ]( {{ proposal.url }} )
+  <div class="proposal-card">
+    <h4><a href="{{ proposal.url }}">{{ proposal.title }}</a></h4>
+    <div class="card-meta">
+      {% if proposal.difficulty %}
+        <span class="tag tag-difficulty">{{ proposal.difficulty }}</span>
+      {% endif %}
+      {% for req in proposal.requirements limit:5 %}
+        <span class="tag">{{ req }}</span>
+      {% endfor %}
+      {% for tag in proposal.tags limit:5 %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% if proposal.duration %}
+      <p class="card-duration">⏱ {{ proposal.duration }}</p>
+    {% endif %}
+  </div>
 {% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
+</div>
 
