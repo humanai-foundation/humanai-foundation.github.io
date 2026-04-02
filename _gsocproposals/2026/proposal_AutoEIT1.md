@@ -30,7 +30,15 @@ Total project length: 175 hours
 ## Expected results
 
 - Convert audio recordings into written transcriptions with 90% agreement with experienced human transcribers
+## Evaluation Strategy
 
+The performance of the transcription system will be evaluated using:
+
+- Word Error Rate (WER)
+- Comparison with human transcriptions
+- Error analysis focusing on common learner speech patterns
+
+This evaluation will ensure the system achieves high reliability across diverse learner profiles.
 ## Requirements
 
 Python, Pytorch or Tensorflow, and some previous experience in Machine Learning.
