@@ -7,6 +7,7 @@ import traceback
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from starlette.responses import StreamingResponse
 from PIL import Image
+import uvicorn
 
 if not hasattr(torch, 'xpu'):
     class XPU:
