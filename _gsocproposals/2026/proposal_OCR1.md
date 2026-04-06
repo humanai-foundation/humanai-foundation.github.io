@@ -40,7 +40,6 @@ Medium
 
 ## Tests
 
-Please use [this link](/assets/GSoC%202026%20tests.pdf) to access the test for this project.
 
 ## Mentors
 
