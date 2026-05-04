@@ -15,6 +15,9 @@ def _add_module_path(folder_name):
         sys.path.insert(0, module_path)
 
 
+_add_module_path("task0_audio_capture")
+from audio_capture import AudioCaptureStream, RollingBuffer, record_for_duration
+
 _add_module_path("task1_audio_pipeline")
 from audio_pipeline import build_feature_dataset
 
@@ -174,6 +177,28 @@ if __name__ == "__main__":
             input_audio_path = str(arg_path)
 
     processed_audio_path = "examples/processed_audio.wav"
+
+    # ------------------------------------------------------------------
+    # Step 1 — Audio Capture & Streaming
+    # ------------------------------------------------------------------
+    print("Step 1: Audio Capture & Streaming")
+    capture_duration = 5.0  # seconds to record from the microphone
+    captured_audio_path = Path("examples/captured_audio.wav")
+    try:
+        captured = record_for_duration(duration=capture_duration, verbose=True)
+        import soundfile as sf
+        sf.write(str(captured_audio_path), captured, 16000)
+        print(
+            f"Step 1: captured {len(captured)} samples "
+            f"({len(captured)/16000:.2f} s) → {captured_audio_path}"
+        )
+        # Use the live capture as the pipeline's input if no explicit path given
+        if len(sys.argv) < 2:
+            input_audio_path = str(captured_audio_path)
+    except ImportError as exc:
+        print(f"Step 1: skipping live capture ({exc}). Using pre-recorded file.")
+    except Exception as exc:
+        print(f"Step 1: microphone unavailable ({exc}). Using pre-recorded file.")
 
     task1_output_csv = Path("examples/task1_features_dataset.csv")
     task1_normalized_dir = Path("examples/normalized_audio")

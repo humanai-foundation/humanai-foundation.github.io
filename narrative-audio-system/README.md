@@ -33,11 +33,17 @@ cd [REPO_NAME]
 pip install -r requirements.txt
 ```
 
+> **Note:** `sounddevice` (added in Step 1) requires PortAudio.
+> * **macOS:** `brew install portaudio`
+> * **Ubuntu/Linux:** `sudo apt install portaudio19-dev`
+> * **Windows:** included automatically via the pip wheel.
+
 ---
 
 ## Project Structure
 
 - `run_pipeline.py`: End-to-end pipeline for all required tasks and bonus analysis
+- `task0_audio_capture/audio_capture.py`: **Step 1** — real-time microphone capture & streaming
 - `task1_audio_pipeline/audio_pipeline.py`: Task 1 audio preprocessing and feature extraction
 - `task2_tone_classification/train_classifier.py`: Task 2 tone classification model training and evaluation
 - `task3_transcription/whisper_transcriber.py`: Task 3 batch transcription and WER measurement
@@ -48,6 +54,54 @@ pip install -r requirements.txt
 ---
 
 ## Task Summary
+
+### Step 1: Audio Capture & Streaming
+
+The capture module (`task0_audio_capture/audio_capture.py`) provides real-time microphone input as the first stage of the pipeline:
+
+1. Opens a microphone stream via `sounddevice.InputStream` with a callback that fires every `chunk_size` samples
+2. Each callback pushes raw PCM samples into a thread-safe `RollingBuffer` (circular deque)
+3. Downstream steps read from the buffer without blocking audio capture
+
+Key parameters:
+
+| Parameter | Default | Effect |
+|-----------|---------|--------|
+| Sample rate | 16 000 Hz | Standard for speech |
+| Chunk size | 1 024 samples | 64 ms per frame |
+| Max buffer | 30 s | Rolling window; oldest frames dropped |
+
+Chunk size trade-offs: 512 samples = 32 ms (lower latency, higher CPU); 2048 samples = 128 ms (lower CPU, higher latency).
+
+**Standalone usage:**
+
+```bash
+# Record 5 seconds and print stats
+python task0_audio_capture/audio_capture.py --duration 5 --chunk 1024 --rate 16000
+
+# Save captured audio to a WAV file
+python task0_audio_capture/audio_capture.py --duration 5 --chunk 1024 --rate 16000 --save examples/captured_audio.wav
+
+# List available microphone devices
+python task0_audio_capture/audio_capture.py --list-devices
+```
+
+**Library usage:**
+
+```python
+from task0_audio_capture.audio_capture import AudioCaptureStream, RollingBuffer
+
+buf = RollingBuffer(max_seconds=10, sample_rate=16000)
+with AudioCaptureStream(sample_rate=16000, chunk_size=1024, buffer=buf) as stream:
+    time.sleep(5)
+audio = buf.get_audio()  # 1-D float32 numpy array
+```
+
+When `run_pipeline.py` is executed without an explicit audio path argument, Step 1 automatically captures 5 seconds from the microphone and passes the recording to Task 1 onwards. If no microphone is available the pipeline falls back to a pre-recorded file.
+
+Primary output: `examples/captured_audio.wav`
+
+---
 
 ### Task 1: Audio Processing Pipeline
 
@@ -140,6 +194,12 @@ python run_pipeline.py examples/03-01-04-02-01-01-11.wav
 
 ### Run tasks individually
 
+Step 1 (audio capture):
+
+```bash
+python task0_audio_capture/audio_capture.py --duration 5 --chunk 1024 --rate 16000 --save examples/captured_audio.wav
+```
+
 Task 1:
 
 ```bash
@@ -176,10 +236,11 @@ python task_bonus_storytelling/storytelling_analysis.py
 
 Generated artifacts include:
 
-1. `examples/task1_features_dataset.csv`
-2. `examples/normalized_audio/`
-3. `examples/transcripts.txt`
-4. `examples/storytelling_analysis.csv`
+1. `examples/captured_audio.wav` (Step 1 — live microphone recording)
+2. `examples/task1_features_dataset.csv`
+3. `examples/normalized_audio/`
+4. `examples/transcripts.txt`
+5. `examples/storytelling_analysis.csv`
 
 Console outputs include:
 
