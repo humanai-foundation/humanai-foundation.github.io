@@ -1,6 +1,8 @@
 librosa==0.10.1
 soundfile==0.12.1
 sounddevice>=0.4.6
+webrtcvad>=2.0.10
+faster-whisper>=1.0.0
 torch==2.11.0
 scikit-learn==1.4.1
 openai-whisper==20231117

@@ -1,0 +1,32 @@
+{
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 1.0,
+      "duration_s": 1.0
+    },
+    {
+      "start": 1.5,
+      "end": 2.5,
+      "duration_s": 1.0
+    },
+    {
+      "start": 3.0,
+      "end": 4.0,
+      "duration_s": 1.0
+    },
+    {
+      "start": 4.5,
+      "end": 5.5,
+      "duration_s": 1.0
+    }
+  ],
+  "meta": {
+    "expected_utterances": 2,
+    "window_s": 3.0,
+    "strategies": [
+      "fixed_window"
+    ],
+    "note": "4\u00d71s=4s, window=3s -> emit at 3s, flush 1s -> 2 utts"
+  }
+}

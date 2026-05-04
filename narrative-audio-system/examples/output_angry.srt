@@ -1,0 +1,4 @@
+1
+00:00:00,780 --> 00:00:03,000
+[Happy] Dogs are sitting by the door.
+

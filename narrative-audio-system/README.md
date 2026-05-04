@@ -44,6 +44,7 @@ pip install -r requirements.txt
 
 - `run_pipeline.py`: End-to-end pipeline for all required tasks and bonus analysis
 - `task0_audio_capture/audio_capture.py`: **Step 1** — real-time microphone capture & streaming
+- `step2_vad/vad.py`: **Step 2** — Voice Activity Detection; labels frames as speech/silence and emits timestamped segments
 - `task1_audio_pipeline/audio_pipeline.py`: Task 1 audio preprocessing and feature extraction
 - `task2_tone_classification/train_classifier.py`: Task 2 tone classification model training and evaluation
 - `task3_transcription/whisper_transcriber.py`: Task 3 batch transcription and WER measurement
@@ -100,6 +101,67 @@ audio = buf.get_audio()  # 1-D float32 numpy array
 When `run_pipeline.py` is executed without an explicit audio path argument, Step 1 automatically captures 5 seconds from the microphone and passes the recording to Task 1 onwards. If no microphone is available the pipeline falls back to a pre-recorded file.
 
 Primary output: `examples/captured_audio.wav`
+
+---
+
+### Step 2: Voice Activity Detection (VAD)
+
+The VAD module (`step2_vad/vad.py`) labels every 10–30 ms audio frame as speech or non-speech and groups consecutive speech frames into timestamped `SpeechSegment` objects.  Only detected speech windows are forwarded to the transcriber — silence is never sent, which prevents wasted compute and mid-sentence cuts.
+
+**Why it matters:** Whisper and similar models need clean speech boundaries to produce coherent transcripts.  Sending raw silence causes hallucinations or empty outputs; cutting too early truncates words.
+
+**Backends (auto-selected)**
+
+| Backend | Latency | Accuracy | Requirement |
+|---------|---------|----------|-------------|
+| `webrtcvad` | < 1 ms/frame | Good (rule-based) | `pip install webrtcvad` |
+| `silero-vad` | ~ 5 ms/frame | Better (neural) | `torch` + internet (auto-download) |
+| `energy` | < 0.1 ms/frame | Basic fallback | none |
+
+**Key parameters**
+
+| Parameter | Default | Effect |
+|-----------|---------|--------|
+| Frame duration | 20 ms | VAD resolution (10/20/30 ms) |
+| Aggressiveness | 2 | webrtcvad mode 0–3 (3 = most aggressive noise filtering) |
+| Speech pad | 300 ms | Pre-speech buffer to avoid clipping first syllable |
+| Silence pad | 400 ms | Post-speech tolerance — allows brief pauses within an utterance |
+| Min speech | 250 ms | Discard clicks and noise bursts shorter than this |
+
+**Example output**
+```
+[VAD] Speech started  at T =   1.200 s
+[VAD] Speech ended    at T =   3.840 s  (duration 2.640 s)
+[VAD] Detected 1 speech segment(s)
+[VAD] Total speech : 2.640 s / 5.056 s (52.2%)
+      [ 1]   1.200s ->   3.840s  (2.640 s)
+```
+
+**Standalone usage:**
+
+```bash
+# Run VAD on a WAV file
+python step2_vad/vad.py --input examples/captured_audio.wav --mode 2 --frame-ms 20
+
+# Run VAD on live microphone input (10 seconds)
+python step2_vad/vad.py --duration 10 --mode 2
+
+# Force a specific backend
+python step2_vad/vad.py --input audio.wav --backend webrtcvad
+```
+
+**Library usage:**
+
+```python
+from step2_vad.vad import detect_speech_segments
+
+segments = detect_speech_segments(audio_array, sample_rate=16000, aggressiveness=2)
+for seg in segments:
+    print(f"Speech {seg.start:.2f}s - {seg.end:.2f}s  ({seg.duration:.2f}s)")
+    # seg.audio is the float32 PCM for that utterance
+```
+
+In `run_pipeline.py`, Step 2 runs immediately after Step 1 and prints a per-segment breakdown before passing audio to Task 1.
 
 ---
 
@@ -198,6 +260,12 @@ Step 1 (audio capture):
 
 ```bash
 python task0_audio_capture/audio_capture.py --duration 5 --chunk 1024 --rate 16000 --save examples/captured_audio.wav
+```
+
+Step 2 (voice activity detection):
+
+```bash
+python step2_vad/vad.py --input examples/captured_audio.wav --mode 2 --frame-ms 20
 ```
 
 Task 1:

@@ -1,0 +1,17 @@
+{
+  "segments": [
+    {
+      "start": 1.0,
+      "end": 3.0,
+      "duration_s": 2.0
+    }
+  ],
+  "meta": {
+    "expected_utterances": 1,
+    "strategies": [
+      "pause_triggered",
+      "fixed_window"
+    ],
+    "note": "1 seg -> 1 utterance always"
+  }
+}

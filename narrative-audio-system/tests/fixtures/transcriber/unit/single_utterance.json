@@ -1,0 +1,12 @@
+{
+  "name": "single_utterance",
+  "utterances": [
+    {
+      "start": 1.2,
+      "end": 3.84,
+      "duration_s": 2.64
+    }
+  ],
+  "note": "1 utterance -> 1 TranscriptionResult",
+  "expected_results": 1
+}

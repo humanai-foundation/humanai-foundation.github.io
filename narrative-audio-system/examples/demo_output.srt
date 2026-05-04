@@ -1,0 +1,16 @@
+1
+00:00:00,000 --> 00:00:02,500
+[calm] The forest was quiet that night.
+
+2
+00:00:03,100 --> 00:00:04,800
+[tense] Until the branch snapped.
+
+3
+00:00:05,200 --> 00:00:07,100
+[fearful] She ran without looking back.
+
+4
+00:00:20,000 --> 00:00:22,200
+[happy] The morning light brought relief.
+

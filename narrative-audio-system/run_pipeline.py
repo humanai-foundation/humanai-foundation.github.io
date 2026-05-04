@@ -18,6 +18,18 @@ def _add_module_path(folder_name):
 _add_module_path("task0_audio_capture")
 from audio_capture import AudioCaptureStream, RollingBuffer, record_for_duration
 
+_add_module_path("vad_engine")
+from vad import detect_speech_segments, VADProcessor
+
+_add_module_path("utterance_buffer")
+from segmenter import UtteranceSegmenter, segment_utterances
+
+_add_module_path("transcriber")
+from streaming_transcriber import Transcriber, StreamingTranscriber, transcribe_utterances
+
+_add_module_path("emotion_classifier")
+from classifier import EmotionClassifier, ParallelProcessor
+
 _add_module_path("task1_audio_pipeline")
 from audio_pipeline import build_feature_dataset
 
@@ -199,6 +211,83 @@ if __name__ == "__main__":
         print(f"Step 1: skipping live capture ({exc}). Using pre-recorded file.")
     except Exception as exc:
         print(f"Step 1: microphone unavailable ({exc}). Using pre-recorded file.")
+
+    # ------------------------------------------------------------------
+    # Step 2 — Voice Activity Detection
+    # ------------------------------------------------------------------
+    print("\nStep 2: Voice Activity Detection")
+    try:
+        import soundfile as _sf_vad
+        _vad_audio, _vad_sr = _sf_vad.read(input_audio_path, dtype="float32", always_2d=False)
+        if _vad_audio.ndim > 1:
+            _vad_audio = _vad_audio.mean(axis=1)
+        speech_segments = detect_speech_segments(
+            _vad_audio,
+            sample_rate=_vad_sr,
+            frame_ms=20,
+            aggressiveness=2,
+            verbose=True,
+        )
+        total_speech = sum(s.duration for s in speech_segments)
+        total_dur = len(_vad_audio) / _vad_sr
+        print(
+            f"Step 2: {len(speech_segments)} segment(s) detected — "
+            f"{total_speech:.2f}s speech / {total_dur:.2f}s total "
+            f"({100*total_speech/max(total_dur,1e-6):.1f}%)"
+        )
+        for i, seg in enumerate(speech_segments, 1):
+            print(f"  [{i:2d}] {seg.start:.3f}s -> {seg.end:.3f}s ({seg.duration:.3f}s)")
+    except Exception as exc:
+        print(f"Step 2: VAD skipped ({exc})")
+        speech_segments = []
+
+    # ------------------------------------------------------------------
+    # Step 3 — Buffering & Utterance Segmentation
+    # ------------------------------------------------------------------
+    print("\nStep 3: Buffering & Utterance Segmentation")
+    try:
+        utterances = segment_utterances(
+            speech_segments,
+            strategy="pause_triggered",
+            pause_s=0.4,
+            max_utterance_s=8.0,
+            sample_rate=16000,
+            verbose=True,
+        )
+        print(f"Step 3: {len(utterances)} utterance(s) ready for transcriber")
+        for i, u in enumerate(utterances, 1):
+            print(
+                f"  [{i:2d}] {u.start:.3f}s -> {u.end:.3f}s  "
+                f"span={u.duration:.3f}s  vad_segs={u.num_vad_segments}"
+            )
+    except Exception as exc:
+        print(f"Step 3: segmentation skipped ({exc})")
+        utterances = []
+
+    # ------------------------------------------------------------------
+    # Steps 4 + 5 — Transcription & Emotion Classification (parallel)
+    # ------------------------------------------------------------------
+    print("\nSteps 4+5: Streaming Transcription + Emotion Classification (parallel)")
+    transcription_results = []
+    emotion_results = []
+    try:
+        if utterances:
+            transcriber = Transcriber(model_size="tiny", verbose=False)
+            classifier  = EmotionClassifier(verbose=False)
+            processor   = ParallelProcessor(transcriber, classifier, verbose=True)
+            paired = processor.process_all(utterances)
+            transcription_results = [t for t, _ in paired]
+            emotion_results       = [e for _, e in paired]
+            full_text = " ".join(r.text for r in transcription_results if r.text)
+            print(f"\nSteps 4+5: Full transcript : {full_text!r}")
+            for i, (tr, er) in enumerate(paired, 1):
+                avg_lat = (tr.latency_ms + er.latency_ms) / 2
+                print(f"  [{i:2d}] \"{tr.text}\"  |  {er.label} ({er.confidence:.2f})  "
+                      f"[transcribe={tr.latency_ms:.0f}ms  classify={er.latency_ms:.1f}ms]")
+        else:
+            print("Steps 4+5: no utterances, skipping.")
+    except Exception as exc:
+        print(f"Steps 4+5: skipped ({exc})")
 
     task1_output_csv = Path("examples/task1_features_dataset.csv")
     task1_normalized_dir = Path("examples/normalized_audio")
