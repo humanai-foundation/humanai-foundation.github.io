@@ -1,0 +1,17 @@
+{
+  "segments": [
+    {
+      "start": 0.5,
+      "end": 0.6,
+      "duration_s": 0.1
+    }
+  ],
+  "meta": {
+    "expected_utterances": 1,
+    "strategies": [
+      "pause_triggered",
+      "fixed_window"
+    ],
+    "note": "0.1s segment \u2014 segmenter emits; filtering is VAD's job"
+  }
+}

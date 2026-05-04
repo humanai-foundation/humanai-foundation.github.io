@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "filename": "silence_3s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\transcriber\\edge\\silence_3s.wav",
+      "duration_s": 3.0,
+      "note": "3 s pure silence -> transcriber returns empty/whitespace text"
+    },
+    {
+      "filename": "noise_3s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\transcriber\\edge\\noise_3s.wav",
+      "duration_s": 3.0,
+      "note": "broadband noise -> transcriber may hallucinate; result must still be str"
+    },
+    {
+      "filename": "tiny_speech.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\transcriber\\edge\\tiny_speech.wav",
+      "duration_s": 0.15,
+      "note": "50 ms speech clip -> result must be str without crashing"
+    },
+    {
+      "filename": "long_speech.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\transcriber\\edge\\long_speech.wav",
+      "duration_s": 8.6,
+      "note": "8 s speech -> tests longer utterance handling"
+    }
+  ]
+}

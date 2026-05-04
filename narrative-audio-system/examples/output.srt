@@ -1,0 +1,16 @@
+1
+00:00:01,000 --> 00:00:03,740
+[Disgust] Dogs are sitting by the door.
+
+2
+00:00:05,440 --> 00:00:07,700
+[Angry] Kids are talking about a door.
+
+3
+00:00:09,600 --> 00:00:12,160
+[Angry] Kids are talking by the door.
+
+4
+00:00:13,880 --> 00:00:16,540
+[Angry] Kids are talking by the door.
+

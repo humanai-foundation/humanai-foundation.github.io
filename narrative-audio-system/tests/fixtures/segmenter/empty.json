@@ -1,0 +1,11 @@
+{
+  "segments": [],
+  "meta": {
+    "expected_utterances": 0,
+    "strategies": [
+      "pause_triggered",
+      "fixed_window"
+    ],
+    "note": "no segments -> no utterances"
+  }
+}

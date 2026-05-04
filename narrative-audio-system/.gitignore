@@ -1,0 +1,29 @@
+# Claude Code internals
+.claude/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# Model checkpoints (large binary files)
+*.pt
+*.bin
+*.onnx
+*.ckpt
+
+# Cached embeddings (regenerate locally)
+*_cache.npz
+
+# OS
+.DS_Store
+Thumbs.db
