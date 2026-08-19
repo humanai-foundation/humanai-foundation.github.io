@@ -22,6 +22,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://medium.com/gitconnected/building-renaissance-an-end-to-end-ocr-pipeline-for-historical-documents-part-ii-41970456bac2" target="_blank">"RenAIssance: Automating transcription of historical documents with weighted CRNN and LLM integration" by Saarthak Gupta</a></td>
   </tr>
+  <tr>
+    <td><a href="https://medium.com/@mykyta.hrebeniuk/twelve-asr-models-one-question-which-one-actually-hears-what-a-language-learner-said-41262f61453a?sharedUserId=mykyta.hrebeniuk" target="_blank">"Twelve ASR Models, One Question: Which One Actually Hears What a Language Learner Said?" by Mykyta Hrebeniuk</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
