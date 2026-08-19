@@ -19,6 +19,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://medium.com/@vennelavarshini07/micro-rooms-macro-noise-engineering-the-tcamp-architecture-for-human-factors-research-380235fc242b" target="_blank">"TCAMP: Automated Team Communication Analysis Pipeline for Human-Factors Research" by Vennela Varshini Anasoori</a></td>
   </tr>
+  <tr>
+    <td><a href="https://medium.com/gitconnected/building-renaissance-an-end-to-end-ocr-pipeline-for-historical-documents-part-ii-41970456bac2" target="_blank">"RenAIssance: Automating transcription of historical documents with weighted CRNN and LLM integration" by Saarthak Gupta</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
