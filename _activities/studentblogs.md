@@ -23,7 +23,7 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
     <td><a href="https://medium.com/gitconnected/building-renaissance-an-end-to-end-ocr-pipeline-for-historical-documents-part-ii-41970456bac2" target="_blank">"RenAIssance: Automating transcription of historical documents with weighted CRNN and LLM integration" by Saarthak Gupta</a></td>
   </tr>
   <tr>
-    <td><a href="https://medium.com/@pratikpawar1565/building-an-ai-powered-system-to-find-federal-research-funding-723cb2c34e8c?sharedUserId=pratikpawar1565" target="_blank">"Building an AI-Powered System to Find Federal Research Funding" by Pratik Pawar</a></td>
+    <td><a href="https://medium.com/@pratikpawar1565/building-an-ai-powered-system-to-find-federal-research-funding-723cb2c34e8c" target="_blank" rel="noopener noreferrer">"Building an AI-Powered System to Find Federal Research Funding" by Pratik Pawar</a></td>
   </tr>
 </table>
 ### Google Summer of Code 2025
