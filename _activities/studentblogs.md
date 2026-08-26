@@ -22,6 +22,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://medium.com/gitconnected/building-renaissance-an-end-to-end-ocr-pipeline-for-historical-documents-part-ii-41970456bac2" target="_blank">"RenAIssance: Automating transcription of historical documents with weighted CRNN and LLM integration" by Saarthak Gupta</a></td>
   </tr>
+  <tr>
+    <td><a href="https://romit-basak.github.io/LAMP-public/blog/a-viewshed-that-sees-through-doors/" target="_blank">"A Viewshed That Sees Through Doors: true 3D visibility analysis for a late-antique necropolis" by Romit Basak</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
