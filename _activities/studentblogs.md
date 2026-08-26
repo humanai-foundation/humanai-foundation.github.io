@@ -25,6 +25,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://medium.com/@pratikpawar1565/building-an-ai-powered-system-to-find-federal-research-funding-723cb2c34e8c" target="_blank" rel="noopener noreferrer">"Building an AI-Powered System to Find Federal Research Funding" by Pratik Pawar</a></td>
   </tr>
+  <tr>
+    <td><a href="https://romit-basak.github.io/LAMP-public/blog/a-viewshed-that-sees-through-doors/" target="_blank">"A Viewshed That Sees Through Doors: true 3D visibility analysis for a late-antique necropolis" by Romit Basak</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
