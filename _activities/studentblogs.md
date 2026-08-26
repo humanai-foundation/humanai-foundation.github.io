@@ -25,6 +25,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://medium.com/@mykyta.hrebeniuk/twelve-asr-models-one-question-which-one-actually-hears-what-a-language-learner-said-41262f61453a?sharedUserId=mykyta.hrebeniuk" target="_blank">"Twelve ASR Models, One Question: Which One Actually Hears What a Language Learner Said?" by Mykyta Hrebeniuk</a></td>
   </tr>
+  <tr>
+    <td><a href="https://romit-basak.github.io/LAMP-public/blog/a-viewshed-that-sees-through-doors/" target="_blank">"A Viewshed That Sees Through Doors: true 3D visibility analysis for a late-antique necropolis" by Romit Basak</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
