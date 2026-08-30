@@ -7,4 +7,24 @@ description: |
 
 ---
 
+## Error Handling and Logging
+
+To ensure reliable operation and easy debugging, AutoEIT implements structured error handling and logging:
+
+1. **Error Handling**
+   - Handles missing or corrupted audio files
+   - Detects transcription failures and retries automatically
+   - Validates scoring inputs to avoid crashes
+
+2. **Logging**
+   - Logs all audio inputs, preprocessing steps, transcription outputs, and scores
+   - Provides timestamps for each step
+   - Stores logs in `/logs/` directory for audit and review
+
+3. **Notifications**
+   - Optional email or console alerts for critical errors
+   - Helps developers quickly identify and resolve issues
+
+---
+
 {% include gsoc_project.ext %}
