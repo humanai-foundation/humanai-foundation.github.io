@@ -31,6 +31,9 @@ This is a collection of blog posts from GSoC students who worked with HumanAI.
   <tr>
     <td><a href="https://romit-basak.github.io/LAMP-public/blog/a-viewshed-that-sees-through-doors/" target="_blank">"A Viewshed That Sees Through Doors: true 3D visibility analysis for a late-antique necropolis" by Romit Basak</a></td>
   </tr>
+  <tr>
+    <td><a href="https://medium.com/@khanna.shreya19/automating-spanish-proficiency-scoring-my-gsoc-2026-journey-5115c5798985?sharedUserId=khanna.shreya19" target="_blank">"Automating Spanish Proficiency Scoring" by Shreya Khanna</a></td>
+  </tr>
 </table>
 ### Google Summer of Code 2025
 
