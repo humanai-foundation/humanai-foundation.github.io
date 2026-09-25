@@ -1,0 +1,52 @@
+[
+  {
+    "type": "caption",
+    "index": 1,
+    "label": "calm",
+    "text": "The forest was quiet that night.",
+    "start": 0.0,
+    "end": 2.5,
+    "confidence": 0.88,
+    "color": "#7ec8a0"
+  },
+  {
+    "type": "caption",
+    "index": 2,
+    "label": "tense",
+    "text": "Until the branch snapped.",
+    "start": 3.1,
+    "end": 4.8,
+    "confidence": 0.79,
+    "color": "#e07a5f"
+  },
+  {
+    "type": "caption",
+    "index": 3,
+    "label": "fearful",
+    "text": "She ran without looking back.",
+    "start": 5.2,
+    "end": 7.1,
+    "confidence": 0.82,
+    "color": "#c07ecf"
+  },
+  {
+    "type": "caption",
+    "index": 4,
+    "label": "happy",
+    "text": "The morning light brought relief.",
+    "start": 15.0,
+    "end": 17.2,
+    "confidence": 0.76,
+    "color": "#f7c948"
+  },
+  {
+    "type": "caption",
+    "index": 5,
+    "label": "happy",
+    "text": "She smiled at the sunrise.",
+    "start": 17.5,
+    "end": 19.0,
+    "confidence": 0.81,
+    "color": "#f7c948"
+  }
+]

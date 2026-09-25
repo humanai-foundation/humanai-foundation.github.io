@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--
+  Step 6 — Browser Overlay
+  ========================
+  Connect to ws://localhost:8765 and handle two message types:
+
+    Track A — caption     : display annotated subtitle with tone colour
+    Track B — atmosphere  : crossfade ambient audio after lag_s delay
+
+  Usage
+  -----
+  1. Start the pipeline with --ws:
+       python output_generator/output_generator.py --input examples/captured_audio.wav --ws
+
+  2. Open this file in a browser (file:// is fine for local testing).
+     For OBS: add a "Browser Source" pointing to this file.
+
+  Layout
+  ------
+  - Full-screen dark background (transparent in OBS)
+  - Caption bar at the bottom: tone label badge + transcribed text
+  - Atmosphere status bar at the top: current soundscape name + fade indicator
+  - Connection status dot (top-right)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Narrative Audio Overlay</title>
+  <style>
+    /* ------------------------------------------------------------------ */
+    /* Base                                                                 */
+    /* ------------------------------------------------------------------ */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.72);   /* semi-transparent for OBS */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Top bar — atmosphere status                                          */
+    /* ------------------------------------------------------------------ */
+    #atmosphere-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      background: rgba(0,0,0,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: opacity 0.6s ease;
+      opacity: 0;           /* hidden until first atmosphere message */
+    }
+    #atmosphere-bar.visible { opacity: 1; }
+
+    #atm-icon { font-size: 1.3rem; }
+
+    #atm-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    #atm-description {
+      font-size: 0.95rem;
+      color: #e0e0e0;
+      flex: 1;
+    }
+
+    #atm-fade-bar-wrap {
+      width: 120px;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    #atm-fade-bar {
+      height: 100%;
+      width: 0%;
+      background: #7ec8a0;
+      border-radius: 2px;
+      transition: width linear;   /* duration set by JS */
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Connection status dot                                                */
+    /* ------------------------------------------------------------------ */
+    #status-dot {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #555;
+      transition: background 0.4s;
+    }
+    #status-dot.connected    { background: #4caf50; }
+    #status-dot.disconnected { background: #e05c5c; }
+    #status-dot.connecting   { background: #f7c948; }
+
+    /* ------------------------------------------------------------------ */
+    /* Bottom — caption area                                                */
+    /* ------------------------------------------------------------------ */
+    #caption-area {
+      padding: 0 40px 36px;
+    }
+
+    #caption-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    #caption-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #tone-badge {
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      background: #555;     /* overridden by JS per emotion */
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    #caption-text {
+      font-size: 1.45rem;
+      font-weight: 500;
+      line-height: 1.4;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+      color: #f5f5f5;
+    }
+
+    /* History — last 3 captions shown above current, faded */
+    #caption-history {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .history-line {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.38);
+      display: flex;
+      gap: 10px;
+    }
+    .history-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      opacity: 0.55;
+      flex-shrink: 0;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Atmosphere overlay glow (subtle colour tint on the background)       */
+    /* ------------------------------------------------------------------ */
+    #bg-glow {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: background 2s ease, opacity 2s ease;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background colour glow -->
+  <div id="bg-glow"></div>
+
+  <!-- Top: atmosphere status -->
+  <div id="atmosphere-bar">
+    <span id="atm-icon">&#127926;</span>
+    <span id="atm-label">Atmosphere</span>
+    <span id="atm-description">—</span>
+    <div id="atm-fade-bar-wrap">
+      <div id="atm-fade-bar"></div>
+    </div>
+  </div>
+
+  <!-- Connection dot -->
+  <div id="status-dot" class="connecting" title="WebSocket status"></div>
+
+  <!-- Bottom: captions -->
+  <div id="caption-area">
+    <div id="caption-history"></div>
+    <div id="caption-box">
+      <span id="tone-badge">—</span>
+      <span id="caption-text"></span>
+    </div>
+  </div>
+
+  <script>
+  // -------------------------------------------------------------------------
+  // Config
+  // -------------------------------------------------------------------------
+  const WS_URL       = 'ws://localhost:8765';
+  const CAPTION_TTL  = 6000;   // ms before caption fades out
+  const HISTORY_MAX  = 3;      // how many past captions to show
+
+  // Tone colour palette (must match captions.py TONE_COLOURS)
+  const TONE_COLOURS = {
+    neutral:   '#a8b4c0',
+    calm:      '#7ec8a0',
+    happy:     '#f7c948',
+    sad:       '#6b9bcf',
+    angry:     '#e05c5c',
+    fearful:   '#c07ecf',
+    disgust:   '#8a9e6b',
+    surprised: '#f0a045',
+    tense:     '#e07a5f',
+    unknown:   '#ffffff',
+  };
+
+  // Atmosphere background tints (subtle, semi-transparent)
+  const ATM_TINTS = {
+    calm:      'rgba(126,200,160,0.08)',
+    happy:     'rgba(247,201,72,0.08)',
+    sad:       'rgba(107,155,207,0.08)',
+    angry:     'rgba(224,92,92,0.10)',
+    fearful:   'rgba(192,126,207,0.10)',
+    tense:     'rgba(224,122,95,0.10)',
+    disgust:   'rgba(138,158,107,0.07)',
+    surprised: 'rgba(240,160,69,0.09)',
+    neutral:   'rgba(168,180,192,0.06)',
+  };
+
+  // Emotion icons for the atmosphere bar
+  const ATM_ICONS = {
+    calm: '🌿', happy: '☀️', sad: '🌧️', angry: '⚡',
+    fearful: '🌑', tense: '🌲', disgust: '💨',
+    surprised: '✨', neutral: '🎵',
+  };
+
+  // -------------------------------------------------------------------------
+  // State
+  // -------------------------------------------------------------------------
+  let captionHistory = [];
+  let captionTimer   = null;
+  let atmLagTimer    = null;
+
+  // -------------------------------------------------------------------------
+  // DOM refs
+  // -------------------------------------------------------------------------
+  const statusDot     = document.getElementById('status-dot');
+  const captionBox    = document.getElementById('caption-box');
+  const toneBadge     = document.getElementById('tone-badge');
+  const captionText   = document.getElementById('caption-text');
+  const captionHist   = document.getElementById('caption-history');
+  const atmBar        = document.getElementById('atmosphere-bar');
+  const atmDesc       = document.getElementById('atm-description');
+  const atmFadeBar    = document.getElementById('atm-fade-bar');
+  const atmIcon       = document.getElementById('atm-icon');
+  const bgGlow        = document.getElementById('bg-glow');
+
+  // -------------------------------------------------------------------------
+  // Track A — display caption
+  // -------------------------------------------------------------------------
+  function showCaption(label, text, color) {
+    // Push current caption to history
+    if (captionText.textContent) {
+      captionHistory.push({ label, text: captionText.textContent,
+                            color: toneBadge.style.background });
+      if (captionHistory.length > HISTORY_MAX)
+        captionHistory.shift();
+      renderHistory();
+    }
+
+    // Update current caption
+    toneBadge.textContent       = label;
+    toneBadge.style.background  = color || TONE_COLOURS[label] || TONE_COLOURS.unknown;
+    captionText.textContent     = `"${text}"`;
+
+    // Animate in
+    captionBox.classList.remove('visible');
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => captionBox.classList.add('visible'));
+    });
+
+    // Auto-fade after TTL
+    clearTimeout(captionTimer);
+    captionTimer = setTimeout(() => {
+      captionBox.classList.remove('visible');
+    }, CAPTION_TTL);
+  }
+
+  function renderHistory() {
+    captionHist.innerHTML = captionHistory.map(h => `
+      <div class="history-line">
+        <span class="history-badge" style="background:${h.color}">${h.label}</span>
+        <span>${h.text}</span>
+      </div>`).join('');
+  }
+
+  // -------------------------------------------------------------------------
+  // Track B — schedule atmosphere crossfade
+  // -------------------------------------------------------------------------
+  function scheduleAtmosphere(data) {
+    clearTimeout(atmLagTimer);
+
+    const lagMs  = (data.lag_s  || 6) * 1000;
+    const fadeMs = (data.fade_in_s || 2) * 1000;
+    const label  = data.emotion_label || 'neutral';
+    const desc   = data.suggested_description || data.query || '—';
+    const icon   = ATM_ICONS[label] || '🎵';
+    const tint   = ATM_TINTS[label]  || ATM_TINTS.neutral;
+    const barColor = TONE_COLOURS[label] || TONE_COLOURS.unknown;
+
+    console.log(`[TrackB] lag=${data.lag_s}s | fade=${data.fade_in_s}s | ${label}: ${desc}`);
+
+    // After lag, start the crossfade animation + background tint
+    atmLagTimer = setTimeout(() => {
+      // Show bar
+      atmBar.classList.add('visible');
+      atmIcon.textContent   = icon;
+      atmDesc.textContent   = desc;
+      atmFadeBar.style.background      = barColor;
+      atmFadeBar.style.transitionDuration = `${fadeMs}ms`;
+
+      // Trigger CSS transition: 0% -> 100% over fade_in_s
+      atmFadeBar.style.width = '0%';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          atmFadeBar.style.width = '100%';
+        });
+      });
+
+      // Background glow transition
+      bgGlow.style.background = tint;
+      bgGlow.style.opacity    = '1';
+
+      // Reset bar width after fade completes so next one starts fresh
+      setTimeout(() => {
+        atmFadeBar.style.transitionDuration = '0ms';
+        atmFadeBar.style.width = '0%';
+      }, fadeMs + 200);
+
+    }, lagMs);
+  }
+
+  // -------------------------------------------------------------------------
+  // WebSocket connection
+  // -------------------------------------------------------------------------
+  function connect() {
+    statusDot.className = 'connecting';
+    const ws = new WebSocket(WS_URL);
+
+    ws.onopen = () => {
+      statusDot.className = 'connected';
+      console.log('[WS] Connected to', WS_URL);
+    };
+
+    ws.onmessage = (evt) => {
+      let data;
+      try { data = JSON.parse(evt.data); }
+      catch { console.warn('[WS] Non-JSON message:', evt.data); return; }
+
+      console.log('[WS] Received:', data);
+
+      if (data.type === 'caption') {
+        // Track A
+        showCaption(data.label, data.text, data.color);
+      } else if (data.type === 'atmosphere') {
+        // Track B
+        scheduleAtmosphere(data);
+      }
+    };
+
+    ws.onclose = () => {
+      statusDot.className = 'disconnected';
+      console.log('[WS] Disconnected — retrying in 3s');
+      setTimeout(connect, 3000);    // auto-reconnect
+    };
+
+    ws.onerror = (err) => {
+      console.error('[WS] Error:', err);
+      ws.close();
+    };
+  }
+
+  connect();
+  </script>
+</body>
+</html>

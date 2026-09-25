@@ -1,0 +1,146 @@
+[
+  {
+    "transcript": {
+      "text": "The forest was quiet that night.",
+      "start": 0.0,
+      "end": 2.5,
+      "latency_ms": 180.0,
+      "backend": "faster-whisper",
+      "confidence": 0.95,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "calm",
+      "confidence": 0.88,
+      "start": 0.0,
+      "end": 2.5,
+      "latency_ms": 12.0,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "calm": 0.88,
+        "neutral": 0.08,
+        "happy": 0.04
+      }
+    }
+  },
+  {
+    "transcript": {
+      "text": "Until the branch snapped.",
+      "start": 3.1,
+      "end": 4.8,
+      "latency_ms": 190.0,
+      "backend": "faster-whisper",
+      "confidence": 0.91,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "tense",
+      "confidence": 0.79,
+      "start": 3.1,
+      "end": 4.8,
+      "latency_ms": 11.5,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "tense": 0.79,
+        "fearful": 0.15,
+        "neutral": 0.06
+      }
+    }
+  },
+  {
+    "transcript": {
+      "text": "She ran without looking back.",
+      "start": 5.2,
+      "end": 7.1,
+      "latency_ms": 185.0,
+      "backend": "faster-whisper",
+      "confidence": 0.93,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "fearful",
+      "confidence": 0.82,
+      "start": 5.2,
+      "end": 7.1,
+      "latency_ms": 13.0,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "fearful": 0.82,
+        "tense": 0.12,
+        "angry": 0.06
+      }
+    }
+  },
+  {
+    "transcript": {
+      "text": "The morning light brought relief.",
+      "start": 15.0,
+      "end": 17.2,
+      "latency_ms": 175.0,
+      "backend": "faster-whisper",
+      "confidence": 0.97,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "happy",
+      "confidence": 0.76,
+      "start": 15.0,
+      "end": 17.2,
+      "latency_ms": 10.5,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "happy": 0.76,
+        "calm": 0.18,
+        "neutral": 0.06
+      }
+    }
+  },
+  {
+    "transcript": {
+      "text": "She smiled at the sunrise.",
+      "start": 17.5,
+      "end": 19.0,
+      "latency_ms": 170.0,
+      "backend": "faster-whisper",
+      "confidence": 0.94,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "happy",
+      "confidence": 0.81,
+      "start": 17.5,
+      "end": 19.0,
+      "latency_ms": 11.0,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "happy": 0.81,
+        "calm": 0.14,
+        "neutral": 0.05
+      }
+    }
+  },
+  {
+    "transcript": {
+      "text": ".",
+      "start": 20.0,
+      "end": 20.3,
+      "latency_ms": 155.0,
+      "backend": "faster-whisper",
+      "confidence": 0.4,
+      "language": "en"
+    },
+    "emotion": {
+      "label": "neutral",
+      "confidence": 0.6,
+      "start": 20.0,
+      "end": 20.3,
+      "latency_ms": 9.0,
+      "backend": "mfcc-mlp",
+      "all_scores": {
+        "neutral": 0.6,
+        "calm": 0.3,
+        "happy": 0.1
+      }
+    }
+  }
+]

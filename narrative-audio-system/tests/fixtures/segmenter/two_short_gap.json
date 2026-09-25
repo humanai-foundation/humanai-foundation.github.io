@@ -1,0 +1,23 @@
+{
+  "segments": [
+    {
+      "start": 0.5,
+      "end": 1.5,
+      "duration_s": 1.0
+    },
+    {
+      "start": 1.7,
+      "end": 2.7,
+      "duration_s": 1.0
+    }
+  ],
+  "meta": {
+    "expected_utterances": 1,
+    "gap_s": 0.2,
+    "pause_s": 0.4,
+    "strategies": [
+      "pause_triggered"
+    ],
+    "note": "gap 0.2s < pause_s 0.4s -> merged"
+  }
+}

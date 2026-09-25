@@ -1,0 +1,22 @@
+{
+  "name": "three_utterances",
+  "utterances": [
+    {
+      "start": 0.5,
+      "end": 2.5,
+      "duration_s": 2.0
+    },
+    {
+      "start": 3.1,
+      "end": 5.2,
+      "duration_s": 2.1
+    },
+    {
+      "start": 6.0,
+      "end": 7.8,
+      "duration_s": 1.8
+    }
+  ],
+  "note": "3 utterances -> 3 results; full_transcript joins all",
+  "expected_results": 3
+}

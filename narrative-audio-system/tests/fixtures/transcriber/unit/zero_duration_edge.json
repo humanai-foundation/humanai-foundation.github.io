@@ -1,0 +1,12 @@
+{
+  "name": "zero_duration_edge",
+  "utterances": [
+    {
+      "start": 2.0,
+      "end": 2.0,
+      "duration_s": 0.0
+    }
+  ],
+  "note": "zero-duration utterance should not crash",
+  "expected_results": 1
+}

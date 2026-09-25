@@ -1,0 +1,46 @@
+{
+  "description": "RAVDESS files with known ground-truth text",
+  "ground_truth_note": "Whisper tiny may paraphrase. Tests check for keyword presence, not exact match.",
+  "keywords": {
+    "01": [
+      "kids",
+      "talking",
+      "door"
+    ],
+    "02": [
+      "dogs",
+      "sitting",
+      "door"
+    ]
+  },
+  "files": [
+    {
+      "filename": "03-01-01-01-01-01-01.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\examples\\03-01-01-01-01-01-01.wav",
+      "statement_code": "01",
+      "ground_truth": "Kids are talking by the door",
+      "start_s": 0.0
+    },
+    {
+      "filename": "03-01-01-01-01-01-04.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\examples\\03-01-01-01-01-01-04.wav",
+      "statement_code": "01",
+      "ground_truth": "Kids are talking by the door",
+      "start_s": 0.0
+    },
+    {
+      "filename": "03-01-01-01-02-01-01.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\examples\\03-01-01-01-02-01-01.wav",
+      "statement_code": "02",
+      "ground_truth": "Dogs are sitting by the door",
+      "start_s": 0.0
+    },
+    {
+      "filename": "03-01-01-01-02-01-04.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\examples\\03-01-01-01-02-01-04.wav",
+      "statement_code": "02",
+      "ground_truth": "Dogs are sitting by the door",
+      "start_s": 0.0
+    }
+  ]
+}

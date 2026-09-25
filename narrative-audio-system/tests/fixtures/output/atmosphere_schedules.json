@@ -1,0 +1,78 @@
+[
+  {
+    "pair_index": 0,
+    "label": "calm",
+    "suppressed": false,
+    "schedule": {
+      "type": "atmosphere",
+      "emotion_label": "calm",
+      "query": "calm gentle wind soft water ambient",
+      "suggested_clip": "gentle wind, soft water",
+      "suggested_description": "gentle wind, soft water",
+      "fade_in_s": 2.0,
+      "lag_s": 6.0
+    }
+  },
+  {
+    "pair_index": 1,
+    "label": "tense",
+    "suppressed": false,
+    "schedule": {
+      "type": "atmosphere",
+      "emotion_label": "tense",
+      "query": "tense forest night ambience suspense",
+      "suggested_clip": "tense forest night, branch snap",
+      "suggested_description": "tense forest night, branch snap",
+      "fade_in_s": 2.0,
+      "lag_s": 6.0
+    }
+  },
+  {
+    "pair_index": 2,
+    "label": "fearful",
+    "suppressed": false,
+    "schedule": {
+      "type": "atmosphere",
+      "emotion_label": "fearful",
+      "query": "tense dark forest night ambient",
+      "suggested_clip": "dark forest, distant owl, creak",
+      "suggested_description": "dark forest, distant owl, creak",
+      "fade_in_s": 2.0,
+      "lag_s": 6.0
+    }
+  },
+  {
+    "pair_index": 3,
+    "label": "happy",
+    "suppressed": false,
+    "schedule": {
+      "type": "atmosphere",
+      "emotion_label": "happy",
+      "query": "upbeat bright cheerful outdoor birds",
+      "suggested_clip": "birdsong, light breeze",
+      "suggested_description": "birdsong, light breeze",
+      "fade_in_s": 2.0,
+      "lag_s": 6.0
+    }
+  },
+  {
+    "pair_index": 4,
+    "label": "happy",
+    "suppressed": true,
+    "schedule": null
+  },
+  {
+    "pair_index": 5,
+    "label": "neutral",
+    "suppressed": false,
+    "schedule": {
+      "type": "atmosphere",
+      "emotion_label": "neutral",
+      "query": "neutral quiet indoor room tone",
+      "suggested_clip": "quiet room tone, light hum",
+      "suggested_description": "quiet room tone, light hum",
+      "fade_in_s": 2.0,
+      "lag_s": 6.0
+    }
+  }
+]

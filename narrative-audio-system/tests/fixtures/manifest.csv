@@ -1,0 +1,9 @@
+# VAD test fixtures manifest
+# name, expected_segments, duration_s, description
+silence_only.wav,0,3.000,3 s pure silence — expect 0 segments
+speech_only.wav,1,3.000,3 s continuous speech — expect 1 segment
+short_burst.wav,0,1.600,0.1 s speech burst (below min threshold) — expect 0 segments
+speech_gap_speech.wav,2,4.000,1 s speech, 1 s silence, 1 s speech — expect 2 segments
+multi_segment.wav,4,7.100,4 speech islands in ~7 s — expect 4 segments
+noisy_speech.wav,1,3.000,Speech + background noise — expect >=1 segment
+quiet_speech.wav,1,2.600,Low-amplitude speech (amplitude=0.08) — expect >=1 segment

@@ -1,0 +1,72 @@
+{
+  "description": "Synthetic emotion audio fixtures for Step 5 classifier tests. Each file is designed with acoustic properties matching the MFCC fingerprint of its target emotion class.",
+  "acoustic_design": {
+    "calm": "f0=120Hz, soft energy, dark spectrum, slow rhythm",
+    "happy": "f0=200Hz, bright harmonics, rising inflections",
+    "angry": "f0=175Hz, high energy, hard-clipped, fast bursts",
+    "sad": "f0=90Hz, falling contour, sparse energy, slow",
+    "fearful": "f0=175Hz, breathy, trembling amplitude, irregular",
+    "neutral": "f0=150Hz, flat, constant energy, balanced spectrum",
+    "surprised": "f0=260Hz onset falling to 160Hz, short burst",
+    "disgust": "f0=105Hz, low-freq growl, staccato, dark tilt"
+  },
+  "note": "Classifier predictions on synthetic audio may not always match the target label \u2014 the model was trained on RAVDESS human speech. Tests assert structural correctness and soft acoustic constraints, not exact label matching.",
+  "files": [
+    {
+      "filename": "calm_6s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\calm_6s.wav",
+      "label": "calm",
+      "duration_s": 6.25,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "happy_7s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\happy_7s.wav",
+      "label": "happy",
+      "duration_s": 5.61,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "angry_8s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\angry_8s.wav",
+      "label": "angry",
+      "duration_s": 5.08,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "sad_6s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\sad_6s.wav",
+      "label": "sad",
+      "duration_s": 6.7,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "fearful_7s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\fearful_7s.wav",
+      "label": "fearful",
+      "duration_s": 5.604,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "neutral_6s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\neutral_6s.wav",
+      "label": "neutral",
+      "duration_s": 5.75,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "surprised_5s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\surprised_5s.wav",
+      "label": "surprised",
+      "duration_s": 4.75,
+      "sample_rate": 16000
+    },
+    {
+      "filename": "disgust_7s.wav",
+      "filepath": "C:\\Users\\EvonHoEvonHo\\humanai-foundation.github.io\\narrative-audio-system\\tests\\fixtures\\emotion_audio\\disgust_7s.wav",
+      "label": "disgust",
+      "duration_s": 6.233,
+      "sample_rate": 16000
+    }
+  ]
+}

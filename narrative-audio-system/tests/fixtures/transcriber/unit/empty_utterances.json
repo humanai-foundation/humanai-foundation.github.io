@@ -1,0 +1,6 @@
+{
+  "name": "empty_utterances",
+  "utterances": [],
+  "note": "no utterances -> no results, full_transcript is empty",
+  "expected_results": 0
+}
